@@ -1,3 +1,5 @@
-export default function Page(){
-  return <h1>Nothing here for now.</h1>
+import { MainPage } from "@/2_pages/main";
+
+export default function Page() {
+    return <MainPage />;
 }
