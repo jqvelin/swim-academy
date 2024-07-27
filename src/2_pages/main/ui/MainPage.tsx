@@ -1,5 +1,6 @@
+import { Footer } from "@/3_widgets/Footer";
 import { Header } from "@/3_widgets/Header";
-import { Introduction, Inventory, Pools } from "@/3_widgets/Sections";
+import { Introduction, Inventory, Outro, Pools } from "@/3_widgets/Sections";
 
 export const MainPage = () => {
     return (
@@ -8,6 +9,8 @@ export const MainPage = () => {
             <Introduction />
             <Pools />
             <Inventory />
+            <Outro />
+            <Footer />
         </div>
     );
 };
