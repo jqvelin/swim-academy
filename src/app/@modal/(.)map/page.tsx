@@ -1,5 +1,12 @@
-const Page = () => {
-    return <h1>Intercepted</h1>
-}
+import { Map } from "@/3_widgets/Map";
+import { Modal } from "@/3_widgets/Modal/ui/Modal";
 
-export default Page
+const Page = () => {
+    return (
+        <Modal>
+            <Map />
+        </Modal>
+    );
+};
+
+export default Page;

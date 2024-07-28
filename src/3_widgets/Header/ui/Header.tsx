@@ -25,7 +25,7 @@ export const Header = () => {
     return (
         <>
             <div
-                className={`fixed left-0 h-[var(--header-height)] ${isHeaderStuck ? "top-0" : "-top-full"} z-40 h-[] w-full duration-500 [-webkit-backdrop-filter:blur(5px)] [backdrop-filter:blur(5px)]`}
+                className={`fixed left-0 h-[var(--header-height)] ${isHeaderStuck ? "top-0" : "-top-full"} z-40 h-[] w-full duration-500 blurry`}
             ></div>
             <header
                 className={`fixed left-[50%] h-[var(--header-height)] w-section-mobile md:w-section-regular ${isHeaderStuck ? "top-0" : "top-[5rem]"} row-aligned z-50 -translate-x-[50%] justify-between px-2 duration-500`}

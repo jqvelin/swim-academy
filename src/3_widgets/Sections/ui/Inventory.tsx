@@ -18,9 +18,7 @@ export const Inventory = () => {
                     className={`mb-8 text-xl font-bold opacity-0 md:text-3xl lg:text-5xl ${inView && "animate-pop-up"}`}
                 >
                     Широкий выбор{" "}
-                    <span className="text-glowing">
-                        инвентаря
-                    </span>
+                    <span className="text-glowing">инвентаря</span>
                     <br />
                     всех типов и размеров
                 </h1>
@@ -29,7 +27,6 @@ export const Inventory = () => {
                 >
                     Всё, что нужно для эффективных и удобных занятий
                 </p>
-                <Link href="/catalog">Просмотреть каталог</Link>
             </div>
             <Image
                 src="/inventory.avif"
