@@ -2,18 +2,20 @@
 import Image from "next/image";
 import { Link } from "@/6_shared/components";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export const Header = () => {
+    const pathname = usePathname()
     const [isHeaderStuck, setIsHeaderStuck] = useState(false);
     useEffect(() => {
-        if (window.scrollY >= 50) {
+        if (window.scrollY >= 50 || pathname !== "/") {
             setIsHeaderStuck(true);
         }
 
         window.addEventListener("scroll", checkHeaderState);
 
         function checkHeaderState() {
-            if (window.scrollY >= 50) {
+            if (window.scrollY >= 50 || pathname !== "/") {
                 setIsHeaderStuck(true);
             } else if (window.scrollY < 50) {
                 setIsHeaderStuck(false);

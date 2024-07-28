@@ -1,27 +1,17 @@
 "use client";
 import { Link } from "@/6_shared/components";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 export const Inventory = () => {
-    const sectionRef = useRef<HTMLElement>(null);
-    const [inView, setInView] = useState(false);
-    useEffect(() => {
-        const observer = new IntersectionObserver(observeSection, {
-            threshold: 0.3
-        });
-        function observeSection(entries: IntersectionObserverEntry[]) {
-            if (entries[0].isIntersecting) {
-                setInView(true);
-            }
-        }
-        observer.observe(sectionRef.current as HTMLElement);
-        return () => observer.unobserve(sectionRef.current as HTMLElement);
+    const { ref, inView } = useInView({
+        threshold: 0.3,
+        triggerOnce: true
     });
     return (
         <section
             className={`col-aligned h-[700px] w-section-mobile justify-between overflow-hidden rounded-xl border-2 border-cyan-neon bg-transparent pt-[5rem] text-center md:h-[1000px] md:w-section-regular`}
-            ref={sectionRef}
+            ref={ref}
         >
             <div className="w-[70%]">
                 <h1

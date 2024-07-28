@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-const montserrat = Montserrat({ subsets: ["latin"] });
+import { ReactNode } from "react";
+const montserrat = Montserrat({ subsets: ["latin"], variable: "--montserrat" });
 
 export const metadata: Metadata = {
     title: "Школа плавания Swim Academy",
@@ -11,9 +12,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-    children
+    children,
+    modal
 }: Readonly<{
-    children: React.ReactNode;
+    children: ReactNode;
+    modal: ReactNode;
 }>) {
     return (
         <html lang="ru">
@@ -21,10 +24,11 @@ export default function RootLayout({
                 className={
                     montserrat.className +
                     " " +
-                    "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[rgb(8,26,80)] to-[rgb(1,7,31)] pt-[var(--header-height)] text-primary"
+                    "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue to-blue-dark text-primary"
                 }
             >
                 {children}
+                {modal}
             </body>
         </html>
     );
