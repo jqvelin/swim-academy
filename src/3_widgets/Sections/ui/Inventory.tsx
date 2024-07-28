@@ -20,7 +20,7 @@ export const Inventory = () => {
     });
     return (
         <section
-            className={`col-aligned h-[700px] w-section-mobile justify-between overflow-hidden rounded-xl border-2 border-cyan-neon bg-transparent pt-[5rem] text-center text-white md:h-[1000px] md:w-section-regular`}
+            className={`col-aligned h-[700px] w-section-mobile justify-between overflow-hidden rounded-xl border-2 border-cyan-neon bg-transparent pt-[5rem] text-center md:h-[1000px] md:w-section-regular`}
             ref={sectionRef}
         >
             <div className="w-[70%]">
@@ -28,7 +28,7 @@ export const Inventory = () => {
                     className={`mb-8 text-xl font-bold opacity-0 md:text-3xl lg:text-5xl ${inView && "animate-pop-up"}`}
                 >
                     Широкий выбор{" "}
-                    <span className="[text-shadow:_0_0_6px_#FFFFFF]">
+                    <span className="text-glowing">
                         инвентаря
                     </span>
                     <br />

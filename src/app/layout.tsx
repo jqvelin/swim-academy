@@ -17,7 +17,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ru">
-            <body className={montserrat.className}>{children}</body>
+            <body
+                className={
+                    montserrat.className +
+                    " " +
+                    "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[rgb(8,26,80)] to-[rgb(1,7,31)] pt-[var(--header-height)] text-primary"
+                }
+            >
+                {children}
+            </body>
         </html>
     );
 }
