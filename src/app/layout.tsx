@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
+import { Providers } from "./_providers/Providers";
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--montserrat" });
 
 export const metadata: Metadata = {
@@ -27,8 +28,10 @@ export default function RootLayout({
                     "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue to-blue-dark text-primary"
                 }
             >
-                {children}
-                {modal}
+                <Providers>
+                    {children}
+                    {modal}
+                </Providers>
             </body>
         </html>
     );

@@ -41,7 +41,7 @@ export const Pools = () => {
                 width={0}
                 sizes="100vw"
                 className="z-0 h-[40%] w-full object-cover md:h-[50%] lg:h-[60%]"
-                alt="Swimmer"
+                alt="Бассейн"
             />
         </section>
     );

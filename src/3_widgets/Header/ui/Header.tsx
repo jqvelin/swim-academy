@@ -3,9 +3,12 @@ import Image from "next/image";
 import { Link } from "@/6_shared/components";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { ProfileThumbnail } from "@/4_features/SignIn";
 
 export const Header = () => {
-    const pathname = usePathname()
+    const session = useSession();
+    const pathname = usePathname();
     const [isHeaderStuck, setIsHeaderStuck] = useState(false);
     useEffect(() => {
         if (window.scrollY >= 50 || pathname !== "/") {
@@ -25,7 +28,7 @@ export const Header = () => {
     return (
         <>
             <div
-                className={`fixed left-0 h-[var(--header-height)] ${isHeaderStuck ? "top-0" : "-top-full"} z-40 h-[] w-full duration-500 blurry`}
+                className={`fixed left-0 h-[var(--header-height)] ${isHeaderStuck ? "top-0" : "-top-full"} blurry z-40 h-[] w-full duration-500`}
             ></div>
             <header
                 className={`fixed left-[50%] h-[var(--header-height)] w-section-mobile md:w-section-regular ${isHeaderStuck ? "top-0" : "top-[5rem]"} row-aligned z-50 -translate-x-[50%] justify-between px-2 duration-500`}
@@ -48,18 +51,23 @@ export const Header = () => {
                         academy
                     </h1>
                 </Link>
-                <Link
-                    href="sign-in"
-                    className="hidden md:flex"
-                >
-                    Записаться на тренировку
-                </Link>
-                <Link
-                    href="sign-in"
-                    className="flex md:hidden"
-                >
-                    Тренироваться
-                </Link>
+                <div className="row-aligned gap-2">
+                    {session?.status === "authenticated" && (
+                        <ProfileThumbnail sessionData={session.data}/>
+                    )}
+                    <Link
+                        href="/sign-in"
+                        className="hidden md:flex"
+                    >
+                        Записаться на тренировку
+                    </Link>
+                    <Link
+                        href="sign-in"
+                        className="flex md:hidden"
+                    >
+                        Тренироваться
+                    </Link>
+                </div>
             </header>
         </>
     );

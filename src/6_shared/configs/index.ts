@@ -1,0 +1,1 @@
+export { nextAuthConfig } from "./model/nextAuthConfig"
