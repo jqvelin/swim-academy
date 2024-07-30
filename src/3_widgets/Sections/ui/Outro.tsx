@@ -7,7 +7,7 @@ export const Outro = () => {
                 Школа Swim Academy - это выбор будущих чемпионов!
             </h3>
             <Link
-                href="/sign-up"
+                href="/sign-in"
                 className="relative z-50"
             >
                 Присоединяйтесь к нам!

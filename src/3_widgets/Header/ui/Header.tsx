@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Link } from "@/6_shared/components";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { ProfileThumbnail } from "@/4_features/SignIn";
 
 export const Header = () => {
@@ -35,7 +35,7 @@ export const Header = () => {
             >
                 <Link
                     href="/"
-                    className="-translate-x-4 bg-transparent text-start hover:bg-transparent"
+                    className="-translate-x-4 h-auto bg-transparent text-start hover:bg-transparent"
                 >
                     <Image
                         src="/logo.png"

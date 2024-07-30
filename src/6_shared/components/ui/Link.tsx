@@ -8,7 +8,7 @@ export const Link: FC<LinkProps> = ({ href, className, scroll, children }) => {
         <NextLink
             href={href}
             className={twMerge(
-                "inline-flex items-center rounded-full bg-cyan-soft px-4 py-2 transition-colors hover:bg-cyan-dark",
+                "inline-flex items-center rounded-full bg-cyan-soft px-4 h-[40px] transition-colors hover:bg-cyan-dark",
                 className
             )}
             scroll={scroll ?? true}

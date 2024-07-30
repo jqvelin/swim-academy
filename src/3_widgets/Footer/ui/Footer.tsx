@@ -16,19 +16,19 @@ export const Footer = () => {
             <div className="row-aligned gap-2">
                 <FontAwesomeIcon
                     icon={faTiktok}
-                    width={24}
+                    size="2x"
                 />
                 <FontAwesomeIcon
                     icon={faTwitter}
-                    width={24}
+                    size="2x"
                 />
                 <FontAwesomeIcon
                     icon={faYoutube}
-                    width={24}
+                    size="2x"
                 />
                 <FontAwesomeIcon
                     icon={faVk}
-                    width={24}
+                    size="2x"
                 />
             </div>
         </footer>
