@@ -1,3 +1,4 @@
+import { fromJSON } from "postcss";
 import type { Config } from "tailwindcss";
 const defaultTheme = require("tailwindcss/defaultTheme");
 
@@ -16,7 +17,9 @@ const config = {
             "pop-up":
                 "slide-up 0.5s ease-in-out forwards, reveal 0.5s ease-in-out forwards",
             "accordion-down": "accordion-down 0.2s ease-out",
-            "accordion-up": "accordion-up 0.2s ease-out"
+            "accordion-up": "accordion-up 0.2s ease-out",
+            "running-line": "running-line 60s linear infinite",
+            "running-line-reverse": "running-line 70s linear infinite reverse"
         },
         keyframes: {
             "slide-up": {
@@ -34,6 +37,10 @@ const config = {
             "accordion-up": {
                 from: { height: "var(--radix-accordion-content-height)" },
                 to: { height: "0" }
+            },
+            "running-line": {
+                from: { right: "-100vw" },
+                to: { right: "100%" }
             }
         },
         extend: {
@@ -87,7 +94,7 @@ const config = {
                 },
                 blue: {
                     DEFAULT: "hsl(var(--blue))",
-                    dark: "hsl(var(--darkblue))"
+                    dark: "hsl(var(--blue-dark))"
                 }
             },
             borderRadius: {

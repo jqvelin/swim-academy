@@ -2,7 +2,16 @@ import { Link } from "@/6_shared/components";
 
 export const Outro = () => {
     return (
-        <section className="relative border-cyan-dark border-y-4 w-full pb-2 pt-2 text-center">
+        <section className="relative w-full pb-2 pt-2 text-center overflow-hidden">
+            <div className="absolute whitespace-nowrap">
+                <div className="relative animate-running-line text-3xl font-bold text-blue">SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY </div>
+                <div className="animate-running-line-reverse relative text-3xl font-bold text-blue">SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY </div>
+                <div className="relative animate-running-line text-3xl font-bold text-blue [animation-duration:60s]">SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY </div>
+                <div className="animate-running-line-reverse relative text-3xl font-bold text-blue [animation-duration:65s]">SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY </div>
+                <div className="relative animate-running-line text-3xl font-bold text-blue [animation-duration:60s]">SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY </div>
+                <div className="animate-running-line-reverse relative text-3xl font-bold text-blue [animation-duration:60s]">SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY </div>
+                <div className="relative animate-running-line text-3xl font-bold text-blue [animation-duration:65s]">SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY SWIM ACADEMY SWIM ACADEMY </div>
+            </div>
             <h3 className="relative z-50 mb-16 text-xl font-bold">
                 Школа Swim Academy - это выбор будущих чемпионов!
             </h3>

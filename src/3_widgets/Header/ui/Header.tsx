@@ -11,16 +11,14 @@ export const Header = () => {
     const pathname = usePathname();
     const [isHeaderStuck, setIsHeaderStuck] = useState(false);
     useEffect(() => {
-        if (window.scrollY >= 50 || pathname !== "/") {
-            setIsHeaderStuck(true);
-        }
+        checkHeaderState()
 
         window.addEventListener("scroll", checkHeaderState);
 
         function checkHeaderState() {
-            if (window.scrollY >= 50 || pathname !== "/") {
+            if (window.scrollY >= 30 || pathname !== "/") {
                 setIsHeaderStuck(true);
-            } else if (window.scrollY < 50) {
+            } else if (window.scrollY < 30) {
                 setIsHeaderStuck(false);
             }
         }
