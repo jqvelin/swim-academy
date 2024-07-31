@@ -8,6 +8,7 @@ import { ProfileThumbnail } from "@/4_features/SignIn";
 
 export const Header = () => {
     const session = useSession();
+    const isUserSignedIn = session?.status === "authenticated"
     const pathname = usePathname();
     const [isHeaderStuck, setIsHeaderStuck] = useState(false);
     useEffect(() => {
@@ -50,20 +51,20 @@ export const Header = () => {
                     </h1>
                 </Link>
                 <div className="row-aligned gap-2">
-                    {session?.status === "authenticated" && (
+                    {isUserSignedIn && (
                         <ProfileThumbnail sessionData={session.data}/>
                     )}
                     <Link
-                        href="/sign-in"
+                        href={isUserSignedIn ? "/application" :"/sign-in"}
                         className="hidden md:flex"
                     >
                         Записаться на тренировку
                     </Link>
                     <Link
-                        href="sign-in"
+                        href={isUserSignedIn ? "/application" :"/sign-in"}
                         className="flex md:hidden"
                     >
-                        Тренироваться
+                        Записаться
                     </Link>
                 </div>
             </header>

@@ -6,7 +6,7 @@ import { SignInButtonProps } from "../model/signInButtonProps.types"
 export const SignInButton: FC<React.ComponentProps<"button"> & SignInButtonProps> = ({provider, callbackUrl, className, children}) => {
     return <button
     onClick={() =>
-        signIn(provider, { callbackUrl, redirect: true })
+        signIn(provider, { callbackUrl, redirect: true, })
     }
     className={className}
 >

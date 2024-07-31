@@ -27,7 +27,7 @@ export const SignInPage = () => {
                 <div className="col-aligned gap-4">
                     <SignInButton
                         provider="yandex"
-                        callbackUrl="/"
+                        callbackUrl="/application"
                         className="row-aligned w-full justify-between rounded-md border-2 p-2"
                     >
                         <FontAwesomeIcon
@@ -39,7 +39,7 @@ export const SignInPage = () => {
                     </SignInButton>
                     <SignInButton
                         provider="google"
-                        callbackUrl="/"
+                        callbackUrl="/application"
                         className="row-aligned w-full justify-between rounded-md border-2 p-2"
                     >
                         <FontAwesomeIcon
