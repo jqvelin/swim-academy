@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -7,8 +7,7 @@ export const useIsHeaderStuck = () => {
     const pathname = usePathname();
     const [isHeaderStuck, setIsHeaderStuck] = useState(false);
     useEffect(() => {
-        checkHeaderState()
-
+        checkHeaderState();
         window.addEventListener("scroll", checkHeaderState);
 
         function checkHeaderState() {
@@ -18,7 +17,7 @@ export const useIsHeaderStuck = () => {
                 setIsHeaderStuck(false);
             }
         }
-    }, []);
+    }, [pathname]);
 
-    return isHeaderStuck
-}
+    return isHeaderStuck;
+};

@@ -1,7 +1,7 @@
 import { ReportPage } from "@/2_pages/report";
 
 const Page = () => {
-    return <ReportPage />
-}
+    return <ReportPage />;
+};
 
-export default Page
+export default Page;

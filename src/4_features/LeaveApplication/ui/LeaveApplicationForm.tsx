@@ -2,16 +2,23 @@
 import { Button } from "@/6_shared/components";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LeaveApplicationFormValues } from "../model/leaveApplicationForm.types";
+import { useState } from "react";
+import { Checkmark } from "@/6_shared/components/ui/Checkmark";
 
 export const LeaveApplicationForm = () => {
-    const { register, handleSubmit, formState } = useForm<LeaveApplicationFormValues>();
+    const [isApplicationSent, setIsApplicationSent] = useState(false);
+    const { register, handleSubmit, formState } =
+        useForm<LeaveApplicationFormValues>();
 
     const onSubmit: SubmitHandler<LeaveApplicationFormValues> = (data) => {
-        console.log(data);
+        setIsApplicationSent(true)
     };
 
     return (
-        <form className="col-aligned w-full gap-4" onSubmit={handleSubmit(onSubmit)}>
+        <form
+            className={`col-aligned w-full gap-4 relative after:transition-all after:duration-1000 ${isApplicationSent ? 'after:opacity-100' : 'after:opacity-0' } after:pointer-events-none after:absolute after:left-0 after:top-0 after:h-full after:w-[calc(100%+1px)] after:[content:''] after:blurry`}
+            onSubmit={handleSubmit(onSubmit)}
+        >
             <input
                 {...register("name")}
                 placeholder="имя"
@@ -35,12 +42,12 @@ export const LeaveApplicationForm = () => {
             />
             <label>Укажите удобное время занятий:</label>
             <input
-                type='date'
+                type="date"
                 {...register("date")}
                 className="w-full rounded-sm border-[1px] border-cyan-dark bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon"
             />
             <input
-                type='time'
+                type="time"
                 {...register("time")}
                 className="w-full rounded-sm border-[1px] border-cyan-dark bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon"
             />
@@ -51,6 +58,7 @@ export const LeaveApplicationForm = () => {
             >
                 Отправить
             </Button>
+            {isApplicationSent && <div className="absolute top-1/2 -translate-y-1/2 z-10"><Checkmark /></div>}
         </form>
     );
 };

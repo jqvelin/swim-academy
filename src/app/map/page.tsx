@@ -1,7 +1,7 @@
-import { MapPage } from "@/2_pages/map"
+import { MapPage } from "@/2_pages/map";
 
 const Page = () => {
-    return <MapPage />
-}
+    return <MapPage />;
+};
 
-export default Page
+export default Page;

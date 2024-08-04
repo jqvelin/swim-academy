@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Школа плавания Swim Academy",
     description:
         "Школа плавания для начинающих и опытных пловцов. Более 100 бассейнов по всей стране. Опытные тренеры, с которыми интересно и полезно заниматься. Широкий выбор спортивного инвентаря. Начните тренировку уже сегодня!",
-    icons: "/logo.png",
+    icons: "/logo.png"
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
                 className={
                     montserrat.className +
                     " " +
-                    "[background-color:hsl(var(--blue))] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue to-blue-dark text-primary"
+                    "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue to-blue-dark text-primary [background-color:hsl(var(--blue))]"
                 }
             >
                 <Providers>

@@ -41,6 +41,27 @@ const config = {
             "running-line": {
                 from: { right: "-100vw" },
                 to: { right: "100%" }
+            },
+            stroke: {
+                "100%": {
+                    "stroke-dashoffset": "0"
+                }
+            },
+            scale: {
+                "0%": {
+                    transform: "none"
+                },
+                "50%": {
+                    transform: "scale3d(1.1, 1.1, 1)"
+                },
+                "100%": {
+                    transform: "none"
+                }
+            },
+            fill: {
+                "100%": {
+                    "box-shadow": "inset 0px 0px 0px 30px $green"
+                }
             }
         },
         extend: {

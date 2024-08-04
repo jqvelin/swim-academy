@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 import { Link } from "@/6_shared/components";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { ProfileThumbnail } from "@/4_features/SignIn";
 import { useIsHeaderStuck } from "../model/useIsHeaderStuck";
