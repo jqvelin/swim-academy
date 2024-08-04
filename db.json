@@ -1,0 +1,36 @@
+{
+    "applications": [
+        {
+            "id": 1,
+            "name": "John",
+            "surname": "Doe",
+            "phone": 89540254567,
+            "preferred_date": "2024-08-04",
+            "preferred_time": "10:00"
+        },
+        {
+            "id": 2,
+            "name": "Mike",
+            "surname": "Williams",
+            "phone": 89524881293,
+            "preferred_date": "2024-08-02",
+            "preferred_time": "12:00"
+        },
+        {
+            "id": 3,
+            "name": "Alice",
+            "surname": "Cooper",
+            "phone": 86542812345,
+            "preferred_date": "2024-08-04",
+            "preferred_time": "16:00"
+        },
+        {
+            "id": 4,
+            "name": "Brandon",
+            "surname": "Rogers",
+            "phone": 89524920511,
+            "preferred_date": "2024-08-05",
+            "preferred_time": "15:30"
+        }
+    ]
+}

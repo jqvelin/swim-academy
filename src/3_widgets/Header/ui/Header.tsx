@@ -5,25 +5,12 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { ProfileThumbnail } from "@/4_features/SignIn";
+import { useIsHeaderStuck } from "../model/useIsHeaderStuck";
 
 export const Header = () => {
     const session = useSession();
-    const isUserSignedIn = session?.status === "authenticated"
-    const pathname = usePathname();
-    const [isHeaderStuck, setIsHeaderStuck] = useState(false);
-    useEffect(() => {
-        checkHeaderState()
-
-        window.addEventListener("scroll", checkHeaderState);
-
-        function checkHeaderState() {
-            if (window.scrollY >= 30 || pathname !== "/") {
-                setIsHeaderStuck(true);
-            } else if (window.scrollY < 30) {
-                setIsHeaderStuck(false);
-            }
-        }
-    }, []);
+    const isUserSignedIn = session?.status === "authenticated";
+    const isHeaderStuck = useIsHeaderStuck();
     return (
         <>
             <div
@@ -34,7 +21,7 @@ export const Header = () => {
             >
                 <Link
                     href="/"
-                    className="-translate-x-4 h-auto bg-transparent text-start hover:bg-transparent"
+                    className="h-auto -translate-x-4 bg-transparent text-start hover:bg-transparent"
                 >
                     <Image
                         src="/logo.png"
@@ -52,16 +39,16 @@ export const Header = () => {
                 </Link>
                 <div className="row-aligned gap-2">
                     {isUserSignedIn && (
-                        <ProfileThumbnail sessionData={session.data}/>
+                        <ProfileThumbnail sessionData={session.data} />
                     )}
                     <Link
-                        href={isUserSignedIn ? "/application" :"/sign-in"}
+                        href={isUserSignedIn ? "/application" : "/sign-in"}
                         className="hidden md:flex"
                     >
                         Записаться на тренировку
                     </Link>
                     <Link
-                        href={isUserSignedIn ? "/application" :"/sign-in"}
+                        href={isUserSignedIn ? "/application" : "/sign-in"}
                         className="flex md:hidden"
                     >
                         Записаться
