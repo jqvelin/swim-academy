@@ -9,10 +9,10 @@ export const ProfileThumbnail = ({ sessionData }: { sessionData: Session }) => {
         return (
             <Image
                 src={ProfileThumbnailSrc}
-                alt="Profile Thumbnail"
+                alt="Аватар"
                 width={40}
                 height={40}
-                className={"rounded-full"}
+                className="rounded-full relative after:absolute after:z-[99999] after:left-0 after:top-0 after:w-[50px] after:aspect-square after:bg-red-400 after:[content:'']"
             />
         );
     } else {
