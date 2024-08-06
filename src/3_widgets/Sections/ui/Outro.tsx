@@ -6,44 +6,44 @@ export const Outro = () => {
             <div className="absolute whitespace-nowrap">
                 <div className="relative animate-running-line text-3xl font-bold text-blue">
                     SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
-                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY
-                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM
+                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY
+                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
                     ACADEMY SWIM ACADEMY SWIM ACADEMY{" "}
                 </div>
                 <div className="relative animate-running-line-reverse text-3xl font-bold text-blue">
                     SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
-                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY
-                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM
+                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY
+                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
                     ACADEMY SWIM ACADEMY SWIM ACADEMY{" "}
                 </div>
                 <div className="relative animate-running-line text-3xl font-bold text-blue [animation-duration:60s]">
                     SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
-                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY
-                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM
+                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY
+                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
                     ACADEMY SWIM ACADEMY SWIM ACADEMY{" "}
                 </div>
                 <div className="relative animate-running-line-reverse text-3xl font-bold text-blue [animation-duration:65s]">
                     SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
-                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY
-                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM
+                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY
+                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
                     ACADEMY SWIM ACADEMY SWIM ACADEMY{" "}
                 </div>
                 <div className="relative animate-running-line text-3xl font-bold text-blue [animation-duration:60s]">
                     SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
-                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY
-                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM
+                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY
+                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
                     ACADEMY SWIM ACADEMY SWIM ACADEMY{" "}
                 </div>
                 <div className="relative animate-running-line-reverse text-3xl font-bold text-blue [animation-duration:60s]">
                     SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
-                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY
-                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM
+                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY
+                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
                     ACADEMY SWIM ACADEMY SWIM ACADEMY{" "}
                 </div>
                 <div className="relative animate-running-line text-3xl font-bold text-blue [animation-duration:65s]">
                     SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
-                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM ACADEMY
-                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY WIM
+                    ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY
+                    SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM ACADEMY SWIM
                     ACADEMY SWIM ACADEMY SWIM ACADEMY{" "}
                 </div>
             </div>

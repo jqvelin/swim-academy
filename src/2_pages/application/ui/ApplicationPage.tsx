@@ -1,4 +1,5 @@
 import { LeaveApplicationForm } from "@/4_features/LeaveApplication";
+import { Button } from "@/6_shared/components";
 
 export const ApplicationPage = () => {
     return (
