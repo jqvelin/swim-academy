@@ -4,11 +4,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { LeaveApplicationFormValues } from "../model/leaveApplicationForm.types";
 import { useState } from "react";
 import { Checkmark } from "@/6_shared/components/ui/Checkmark";
-import { useGetAllApplications } from "@/5_entities/Application";
 
 export const LeaveApplicationForm = () => {
     const [isApplicationSent, setIsApplicationSent] = useState(false);
-    const {data: applications} = useGetAllApplications()
     const { register, handleSubmit, formState } =
         useForm<LeaveApplicationFormValues>({
             mode: "onBlur"
