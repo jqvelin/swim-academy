@@ -12,7 +12,7 @@ export const ProfileThumbnail = ({ sessionData }: { sessionData: Session }) => {
                 alt="Аватар"
                 width={40}
                 height={40}
-                className="rounded-full relative after:absolute after:z-[99999] after:left-0 after:top-0 after:w-[50px] after:aspect-square after:bg-red-400 after:[content:'']"
+                className="relative rounded-full after:absolute after:left-0 after:top-0 after:z-[99999] after:aspect-square after:w-[50px] after:bg-red-400 after:[content:'']"
             />
         );
     } else {

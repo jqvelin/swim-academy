@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const ApplicationDtoSchema = z.object({
-    id: z.coerce.number(),
+    id: z.string(),
     name: z.string(),
     surname: z.string(),
     phone: z.coerce.number(),

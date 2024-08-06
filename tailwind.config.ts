@@ -16,7 +16,7 @@ const config = {
         animation: {
             "pop-up":
                 "slide-up 0.5s ease-in-out forwards, reveal 0.5s ease-in-out forwards",
-            "reveal": "reveal 0.3s ease-in-out forwards",
+            reveal: "reveal 0.3s ease-in-out forwards",
             "accordion-down": "accordion-down 0.2s ease-out",
             "accordion-up": "accordion-up 0.2s ease-out",
             "running-line": "running-line 60s linear infinite",

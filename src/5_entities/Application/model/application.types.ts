@@ -1,5 +1,5 @@
 export type Application = {
-    id: number;
+    id: string;
     name: string;
     surname: string;
     phone: number;

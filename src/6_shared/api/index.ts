@@ -1,1 +1,1 @@
-export { applicationsApi } from "./model/applicationsApi";
+export { applicationsApi } from "../../5_entities/Application/model/applicationsApi";

@@ -7,13 +7,25 @@ import {
     faCalendar,
     faCheck,
     faClock,
-    faPerson,
     faPhone,
     faUser
 } from "@fortawesome/free-solid-svg-icons";
+import { useMemo } from "react";
 
 export const ApplicationList = () => {
-    const { data: applications } = useGetAllApplications();
+    const { data } = useGetAllApplications();
+    const applications = useMemo(() => {
+        return data?.sort((a, b) => {
+            if (a.isResolved === b.isResolved) {
+                return 0;
+            } else if (a.isResolved) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
+    }, [data]);
+
     return (
         <table className="w-11/12 text-center">
             <thead>

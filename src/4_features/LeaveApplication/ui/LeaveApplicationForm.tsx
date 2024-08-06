@@ -1,18 +1,32 @@
 "use client";
-import { Button, Link } from "@/6_shared/components";
+import { Button, Checkmark, Link } from "@/6_shared/components";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LeaveApplicationFormValues } from "../model/leaveApplicationForm.types";
 import { useState } from "react";
-import { Checkmark } from "@/6_shared/components/ui/Checkmark";
+import { Application } from "@/5_entities/Application";
+import { generateId } from "@/6_shared/utils";
+import { useSendApplicationMutation } from "@/5_entities/Application/model/query-hooks/useSendApplicationMutation";
 
 export const LeaveApplicationForm = () => {
     const [isApplicationSent, setIsApplicationSent] = useState(false);
+    const { mutateAsync: sendApplication } = useSendApplicationMutation();
+
     const { register, handleSubmit, formState } =
         useForm<LeaveApplicationFormValues>({
             mode: "onBlur"
         });
 
-    const onSubmit: SubmitHandler<LeaveApplicationFormValues> = (data) => {
+    const onSubmit: SubmitHandler<LeaveApplicationFormValues> = async (
+        data
+    ) => {
+        const application: Application = {
+            ...data,
+            id: generateId(),
+            isResolved: false,
+            phone: parseInt(data.phone)
+        };
+
+        await sendApplication(application);
         setIsApplicationSent(true);
     };
 
@@ -40,25 +54,25 @@ export const LeaveApplicationForm = () => {
                         required: "Поле обязательно!"
                     })}
                     placeholder="имя"
-                    className={`w-full rounded-sm ${formState.errors.name ? "placeholder:text-red-400 border-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
+                    className={`w-full rounded-sm ${formState.errors.name ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                 />
                 <input
                     {...register("surname", {
                         required: "Поле обязательно!"
                     })}
                     placeholder="фамилия"
-                    className={`w-full rounded-sm ${formState.errors.surname ? "placeholder:text-red-400 border-red-400" : "border-cyan-dark" } border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
+                    className={`w-full rounded-sm ${formState.errors.surname ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                 />
                 <input
                     {...register("phone", {
                         required: "Поле обязательно!",
                         minLength: {
                             value: 11,
-                            message: 'Номер должен содержать 11 цифр'
+                            message: "Номер должен содержать 11 цифр"
                         },
                         maxLength: {
                             value: 11,
-                            message: 'Номер должен содержать 11 цифр'
+                            message: "Номер должен содержать 11 цифр"
                         },
                         pattern: {
                             value: /^[0-9]+$/i,
@@ -67,24 +81,26 @@ export const LeaveApplicationForm = () => {
                     })}
                     type="tel"
                     placeholder="номер телефона (8...)"
-                    className={`w-full rounded-sm ${formState.errors.phone ? "placeholder:text-red-400 border-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
+                    className={`w-full rounded-sm ${formState.errors.phone ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                 />
                 <label>Укажите удобное время занятий:</label>
                 <input
                     type="date"
-                    {...register("date", {
+                    {...register("preferred_date", {
                         required: "Поле обязательно!",
                         pattern: {
                             value: /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))/,
                             message: "Некорректный формат даты"
                         }
                     })}
-                    className={`w-full rounded-sm ${formState.errors.date ? "placeholder:text-red-400 border-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
+                    className={`w-full rounded-sm ${formState.errors.preferred_date ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                 />
                 <input
                     type="time"
-                    {...register("time", { required: "Поле обязательно!" })}
-                    className={`w-full rounded-sm ${formState.errors.time ? "placeholder:text-red-400 border-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
+                    {...register("preferred_time", {
+                        required: "Поле обязательно!"
+                    })}
+                    className={`w-full rounded-sm ${formState.errors.preferred_time ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                 />
                 <Button
                     type="submit"
@@ -93,7 +109,12 @@ export const LeaveApplicationForm = () => {
                     Отправить
                 </Button>
             </form>
-            <Link href="/" className="w-full bg-transparent hover:bg-transparent border-2 border-cyan-dark">Назад</Link>
+            <Link
+                href="/"
+                className="w-full border-2 border-cyan-dark bg-transparent hover:bg-transparent"
+            >
+                Назад
+            </Link>
         </div>
     );
 };

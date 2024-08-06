@@ -1,5 +1,5 @@
-import { ApplicationsPage } from "@/2_pages/applications"
-import { Metadata } from "next"
+import { ApplicationsPage } from "@/2_pages/applications";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Менеджер заявок Swim Academy",
@@ -7,10 +7,10 @@ export const metadata: Metadata = {
         index: false,
         follow: false
     }
-}
+};
 
 const Page = () => {
-    return <ApplicationsPage />
-}
+    return <ApplicationsPage />;
+};
 
-export default Page
+export default Page;
