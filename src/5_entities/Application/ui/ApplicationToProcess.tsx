@@ -24,20 +24,19 @@ export const ApplicationToProcess = ({
         document.body.style.overflow = isConfirmationShown ? "hidden" : "auto";
     }, [isConfirmationShown]);
 
-    const { mutateAsync: changeApplicationState, isPending } =
+    const { mutate: changeApplicationState, isPending } =
         useApplicationStateMutation();
 
-    const handleChangeApplicationState = async () => {
+    const handleChangeApplicationState = () => {
         if (!isConfirmationShown) {
             setIsCofirmationShown(true);
             return;
         }
         setIsCofirmationShown(false);
-        await changeApplicationState({
+        changeApplicationState({
             applicationId: application.id,
             nextState: !application.isResolved
         });
-        queryClient.invalidateQueries({ queryKey: ["applications"] });
     };
 
     return (
@@ -73,25 +72,30 @@ export const ApplicationToProcess = ({
                 </td>
             </tr>
             {isConfirmationShown && (
-                <Modal>
-                    <ModalHeader>Подтвердите действие</ModalHeader>
-                    <ModalContent>
-                        <p>
-                            Вы действительно хотите изменить состояние заявки?
-                        </p>
-                    </ModalContent>
-                    <ModalFooter>
-                        <Button onClick={handleChangeApplicationState}>
-                            Подтвердить
-                        </Button>
-                        <Button
-                            className="border-2 border-blue bg-transparent text-blue hover:border-blue/60 hover:bg-transparent hover:text-blue/60"
-                            onClick={() => setIsCofirmationShown(false)}
-                        >
-                            Отменить
-                        </Button>
-                    </ModalFooter>
-                </Modal>
+                <tr>
+                    <td>
+                        <Modal>
+                            <ModalHeader>Подтвердите действие</ModalHeader>
+                            <ModalContent>
+                                <p>
+                                    Вы действительно хотите изменить состояние
+                                    заявки?
+                                </p>
+                            </ModalContent>
+                            <ModalFooter>
+                                <Button onClick={handleChangeApplicationState}>
+                                    Подтвердить
+                                </Button>
+                                <Button
+                                    className="border-2 border-blue bg-transparent text-blue hover:border-blue/60 hover:bg-transparent hover:text-blue/60"
+                                    onClick={() => setIsCofirmationShown(false)}
+                                >
+                                    Отменить
+                                </Button>
+                            </ModalFooter>
+                        </Modal>
+                    </td>
+                </tr>
             )}
         </>
     );
