@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ComponentPropsWithoutRef, FC, HTMLAttributes, PropsWithChildren, ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 export const Modal = ({ children }: { children: ReactNode }) => {
     return (
@@ -10,8 +11,8 @@ export const Modal = ({ children }: { children: ReactNode }) => {
     );
 };
 
-export const ModalHeader = ({ children }: { children: ReactNode }) => {
-    return <p className="mb-auto font-bold">{children}</p>;
+export const ModalHeader: FC<PropsWithChildren<ComponentPropsWithoutRef<"p">> & HTMLAttributes<HTMLParagraphElement>> = ({...props}) => {
+    return <p className={twMerge("mb-auto font-bold", props.className)}>{props.children}</p>;
 };
 
 export const ModalContent = ({ children }: { children: ReactNode }) => {

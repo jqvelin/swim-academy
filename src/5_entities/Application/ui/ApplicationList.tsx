@@ -10,21 +10,11 @@ import {
     faPhone,
     faUser
 } from "@fortawesome/free-solid-svg-icons";
-import { useMemo } from "react";
+import { useSortApplications } from "../model/useSortApplications";
 
 export const ApplicationList = () => {
     const { data } = useGetAllApplications();
-    const applications = useMemo(() => {
-        return data?.sort((a, b) => {
-            if (a.isResolved === b.isResolved) {
-                return 0;
-            } else if (a.isResolved) {
-                return 1;
-            } else {
-                return -1;
-            }
-        });
-    }, [data]);
+    const applications = useSortApplications(data || []);
 
     return (
         <table className="w-11/12 text-center">

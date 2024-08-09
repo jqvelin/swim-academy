@@ -1,6 +1,5 @@
 "use client";
 
-import { useQueryClient } from "@tanstack/react-query";
 import type { Application } from "../model/application.types";
 import { useApplicationStateMutation } from "../model/query-hooks/useApplicationStateMutation";
 import { useEffect, useState } from "react";
@@ -17,15 +16,19 @@ export const ApplicationToProcess = ({
 }: {
     application: Application;
 }) => {
-    const queryClient = useQueryClient();
     const [isConfirmationShown, setIsCofirmationShown] = useState(false);
+    const [isErrorModalShown, setIsErrorModalShown] = useState(false);
 
     useEffect(() => {
         document.body.style.overflow = isConfirmationShown ? "hidden" : "auto";
     }, [isConfirmationShown]);
 
-    const { mutate: changeApplicationState, isPending } =
+    const { mutate: changeApplicationState, isPending, isError } =
         useApplicationStateMutation();
+
+    useEffect(() => {
+        if (isError) setIsErrorModalShown(true)
+    }, [isError])
 
     const handleChangeApplicationState = () => {
         if (!isConfirmationShown) {
@@ -97,6 +100,26 @@ export const ApplicationToProcess = ({
                     </td>
                 </tr>
             )}
+            {isErrorModalShown && <tr>
+                    <td>
+                        <Modal>
+                            <ModalHeader className="text-red-400">Ошибка</ModalHeader>
+                            <ModalContent>
+                                <p>
+                                    Запрос не выполнен. Попробуйте ещё раз
+                                </p>
+                            </ModalContent>
+                            <ModalFooter>
+                                <Button
+                                    className="border-2 border-blue bg-transparent text-blue hover:border-blue/60 hover:bg-transparent hover:text-blue/60"
+                                    onClick={() => setIsErrorModalShown(false)}
+                                >
+                                    Закрыть
+                                </Button>
+                            </ModalFooter>
+                        </Modal>
+                    </td>
+                </tr>}
         </>
     );
 };
