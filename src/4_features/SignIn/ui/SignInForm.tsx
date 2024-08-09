@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/6_shared/components";
 import { useForm } from "react-hook-form";
 import { FormValues } from "../model/signInForm.types";
@@ -7,8 +8,10 @@ import type { SubmitHandler } from "react-hook-form";
 export const SignInForm = () => {
     const { register, handleSubmit, formState } = useForm<FormValues>();
 
-    const emailError = formState.errors.email?.message;
-    const passwordError = formState.errors.password?.message;
+    const [emailError, passwordError] = [
+        formState.errors.email?.message,
+        formState.errors.password?.message
+    ];
 
     const submitHandler: SubmitHandler<FormValues> = (data) => {
         console.log(data);

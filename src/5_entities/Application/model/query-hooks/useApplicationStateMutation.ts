@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { applicationsApi } from "../applicationsApi";
@@ -17,31 +17,42 @@ export const useApplicationStateMutation = () => {
         }) => applicationsApi.changeApplicationState(applicationId, nextState),
         mutationKey: ["applications"],
         onMutate: async (newApplicationData) => {
-            await queryClient.cancelQueries({queryKey: ["applications"]});
-            const previousApplicationData = queryClient.getQueryData(["applications"])
-            queryClient.setQueryData(["applications"], (oldApplicationData: AxiosResponse<Application[]>) => {
-                return {
-                    ...oldApplicationData,
-                    data: oldApplicationData.data.map((application) => {
-                        if (application.id === newApplicationData.applicationId) {
-                            return {
-                                ...application,
-                                isResolved: newApplicationData.nextState
+            await queryClient.cancelQueries({ queryKey: ["applications"] });
+            const previousApplicationData = queryClient.getQueryData([
+                "applications"
+            ]);
+            queryClient.setQueryData(
+                ["applications"],
+                (oldApplicationData: AxiosResponse<Application[]>) => {
+                    return {
+                        ...oldApplicationData,
+                        data: oldApplicationData.data.map((application) => {
+                            if (
+                                application.id ===
+                                newApplicationData.applicationId
+                            ) {
+                                return {
+                                    ...application,
+                                    isResolved: newApplicationData.nextState
+                                };
                             }
-                        }
-                        return application
-                    })
+                            return application;
+                        })
+                    };
                 }
-            })
+            );
             return {
                 previousApplicationData
-            }
+            };
         },
         onError: (_, __, context) => {
-            queryClient.setQueryData(["applications"], () => context?.previousApplicationData)
+            queryClient.setQueryData(
+                ["applications"],
+                () => context?.previousApplicationData
+            );
         },
         onSettled: () => {
-            queryClient.invalidateQueries({queryKey: ["applications"]});
-        },
+            queryClient.invalidateQueries({ queryKey: ["applications"] });
+        }
     });
 };

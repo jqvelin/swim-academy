@@ -21,9 +21,9 @@ export const ApplicationsPage = async () => {
             </Link>
             <h1 className="mb-8 text-center text-2xl font-bold md:text-4xl">
                 Список заявок на{" "}
-                {(new Date()).getDate() +
+                {new Date().getDate() +
                     "." +
-                    String((new Date()).getMonth() + 1).padStart(2, "0")}
+                    String(new Date().getMonth() + 1).padStart(2, "0")}
             </h1>
             <ApplicationList />
         </div>

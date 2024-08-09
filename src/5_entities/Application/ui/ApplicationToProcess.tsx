@@ -23,12 +23,15 @@ export const ApplicationToProcess = ({
         document.body.style.overflow = isConfirmationShown ? "hidden" : "auto";
     }, [isConfirmationShown]);
 
-    const { mutate: changeApplicationState, isPending, isError } =
-        useApplicationStateMutation();
+    const {
+        mutate: changeApplicationState,
+        isPending,
+        isError
+    } = useApplicationStateMutation();
 
     useEffect(() => {
-        if (isError) setIsErrorModalShown(true)
-    }, [isError])
+        if (isError) setIsErrorModalShown(true);
+    }, [isError]);
 
     const handleChangeApplicationState = () => {
         if (!isConfirmationShown) {
@@ -100,14 +103,15 @@ export const ApplicationToProcess = ({
                     </td>
                 </tr>
             )}
-            {isErrorModalShown && <tr>
+            {isErrorModalShown && (
+                <tr>
                     <td>
                         <Modal>
-                            <ModalHeader className="text-red-400">Ошибка</ModalHeader>
+                            <ModalHeader className="text-red-400">
+                                Ошибка
+                            </ModalHeader>
                             <ModalContent>
-                                <p>
-                                    Запрос не выполнен. Попробуйте ещё раз
-                                </p>
+                                <p>Запрос не выполнен. Попробуйте ещё раз</p>
                             </ModalContent>
                             <ModalFooter>
                                 <Button
@@ -119,7 +123,8 @@ export const ApplicationToProcess = ({
                             </ModalFooter>
                         </Modal>
                     </td>
-                </tr>}
+                </tr>
+            )}
         </>
     );
 };

@@ -3,7 +3,8 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
 import { Providers } from "./_providers/Providers";
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--montserrat" });
+
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Школа плавания Swim Academy",
