@@ -11,7 +11,7 @@ export const Pools = () => {
 
     return (
         <section
-            className={`col-aligned h-[700px] w-section-mobile items-center justify-between overflow-hidden rounded-xl border-2 border-cyan-neon bg-transparent pt-[5rem] text-center md:h-[1000px] md:w-section-regular`}
+            className="col-aligned h-[700px] w-section-mobile items-center justify-between overflow-hidden rounded-xl border-2 border-cyan-neon bg-transparent pt-[5rem] text-center transition-all duration-500 hover:scale-[1.01] hover:[box-shadow:0_0_5px_0_hsl(var(--cyan-neon))] md:h-[1000px] md:w-section-regular"
             ref={ref}
         >
             <div className="w-[70%] gap-4">

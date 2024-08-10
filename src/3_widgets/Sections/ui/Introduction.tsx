@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const Introduction = () => {
     return (
-        <section className="relative h-section-mobile w-section-mobile overflow-hidden rounded-xl border-2 border-cyan-neon bg-transparent pt-[5rem] md:h-section-regular md:w-section-regular">
+        <section className="relative h-section-mobile w-section-mobile overflow-hidden rounded-xl border-2 border-cyan-neon bg-transparent pt-[5rem] transition-all duration-500 hover:scale-[1.01] hover:[box-shadow:0_0_5px_0_hsl(var(--cyan-neon))] md:h-section-regular md:w-section-regular">
             <div className="absolute right-2 z-10 w-[70%] text-end md:w-[60%]">
                 <h1 className="mb-8 text-xl font-bold md:text-3xl lg:text-5xl">
                     Самая <span className="text-glowing">прогрессивная</span>{" "}
