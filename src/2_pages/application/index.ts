@@ -1,1 +1,1 @@
-export { ApplicationPage } from "./ui/ApplicationPage";
+export { LeaveApplicationPage } from "./ui/LeaveApplicationPage";

@@ -1,5 +1,5 @@
 "use client";
-import { Button, Checkmark, Link } from "@/6_shared/components";
+import { Button, Checkmark, formatDate, Link } from "@/6_shared/components";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LeaveApplicationFormValues } from "../model/leaveApplicationForm.types";
 import { useState } from "react";
@@ -19,11 +19,12 @@ export const LeaveApplicationForm = () => {
     const onSubmit: SubmitHandler<LeaveApplicationFormValues> = async (
         data
     ) => {
+        const formattedDate = formatDate(data.preferred_date)
         const application: Application = {
             ...data,
+            preferred_date: formattedDate,
             id: generateId(),
-            isResolved: false,
-            phone: parseInt(data.phone)
+            isResolved: false
         };
 
         await sendApplication(application);
@@ -51,21 +52,31 @@ export const LeaveApplicationForm = () => {
             >
                 <input
                     {...register("name", {
-                        required: "Поле обязательно!"
+                        required: {
+                            value: true,
+                            message: "Поле обязательно!"
+                        },
                     })}
                     placeholder="имя"
                     className={`w-full rounded-sm ${formState.errors.name ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                 />
                 <input
                     {...register("surname", {
-                        required: "Поле обязательно!"
+                        required: {
+                            value: true,
+                            message: "Поле обязательно!"
+                        },
                     })}
                     placeholder="фамилия"
                     className={`w-full rounded-sm ${formState.errors.surname ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                 />
                 <input
                     {...register("phone", {
-                        required: "Поле обязательно!",
+                        valueAsNumber: true,
+                        required: {
+                            value: true,
+                            message: "Поле обязательно!"
+                        },
                         minLength: {
                             value: 11,
                             message: "Номер должен содержать 11 цифр"
@@ -73,13 +84,9 @@ export const LeaveApplicationForm = () => {
                         maxLength: {
                             value: 11,
                             message: "Номер должен содержать 11 цифр"
-                        },
-                        pattern: {
-                            value: /^[0-9]+$/i,
-                            message: "только цифры"
                         }
                     })}
-                    type="tel"
+                    type="number"
                     placeholder="номер телефона (8...)"
                     className={`w-full rounded-sm ${formState.errors.phone ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                 />
@@ -87,18 +94,21 @@ export const LeaveApplicationForm = () => {
                 <input
                     type="date"
                     {...register("preferred_date", {
-                        required: "Поле обязательно!",
-                        pattern: {
-                            value: /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))/,
-                            message: "Некорректный формат даты"
-                        }
+                        required: {
+                            value: true,
+                            message: "Поле обязательно!"
+                        },
+                        valueAsDate: true
                     })}
                     className={`w-full rounded-sm ${formState.errors.preferred_date ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                 />
                 <input
                     type="time"
                     {...register("preferred_time", {
-                        required: "Поле обязательно!"
+                        required: {
+                            value: true,
+                            message: "Поле обязательно!"
+                        },
                     })}
                     className={`w-full rounded-sm ${formState.errors.preferred_time ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                 />

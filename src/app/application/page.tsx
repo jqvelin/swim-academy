@@ -1,4 +1,4 @@
-import { ApplicationPage } from "@/2_pages/application";
+import { LeaveApplicationPage } from "@/2_pages/application";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 const Page = () => {
-    return <ApplicationPage />;
+    return <LeaveApplicationPage />;
 };
 
 export default Page;

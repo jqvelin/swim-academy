@@ -1,7 +1,7 @@
 export type LeaveApplicationFormValues = {
     name: string;
     surname: string;
-    phone: string;
-    preferred_date: string;
+    phone: number;
+    preferred_date: Date;
     preferred_time: string;
 };

@@ -1,7 +1,6 @@
 import { LeaveApplicationForm } from "@/4_features/LeaveApplication";
-import { Button } from "@/6_shared/components";
 
-export const ApplicationPage = () => {
+export const LeaveApplicationPage = () => {
     return (
         <div className="col-aligned h-screen justify-center">
             <div className="col-aligned">
