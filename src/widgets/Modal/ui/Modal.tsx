@@ -14,7 +14,7 @@ export const Modal = ({ children }: { children: ReactNode }) => {
 
     return (
         <div
-            className="col-aligned blurry fixed left-0 top-0 h-screen w-screen justify-center"
+            className="col-aligned z-50 blurry fixed left-0 top-0 h-screen w-screen justify-center"
             ref={modalRef}
             onClick={handleModalClick}
         >
