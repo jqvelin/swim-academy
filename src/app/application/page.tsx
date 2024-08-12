@@ -1,4 +1,4 @@
-import { LeaveApplicationPage } from "@/2_pages/application";
+import { LeaveApplicationPage } from "@/_pages/application";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -1,4 +1,4 @@
-import { ApplicationsPage } from "@/2_pages/applications";
+import { ApplicationsPage } from "@/_pages/applications";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

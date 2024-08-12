@@ -1,4 +1,4 @@
-import { nextAuthConfig } from "@/4_features/SignIn";
+import { nextAuthConfig } from "@/features/SignIn";
 import NextAuth from "next-auth/next";
 
 const handler = NextAuth(nextAuthConfig);

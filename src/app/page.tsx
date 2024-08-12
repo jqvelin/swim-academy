@@ -1,4 +1,4 @@
-import { MainPage } from "@/2_pages/main";
+import { MainPage } from "@/_pages/main";
 
 const Page = () => {
     return <MainPage />;
