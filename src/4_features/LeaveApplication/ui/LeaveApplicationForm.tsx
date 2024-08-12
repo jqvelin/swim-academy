@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Application } from "@/5_entities/Application";
 import { generateId } from "@/6_shared/utils";
 import { useSendApplicationMutation } from "@/5_entities/Application/model/query-hooks/useSendApplicationMutation";
+import axios from "axios";
 
 export const LeaveApplicationForm = () => {
     const [isApplicationSent, setIsApplicationSent] = useState(false);
@@ -49,69 +50,92 @@ export const LeaveApplicationForm = () => {
             <form
                 className={`col-aligned w-full select-none gap-4 ${isApplicationSent && "pointer-events-none"}`}
                 onSubmit={handleSubmit(onSubmit)}
-            >
-                <input
-                    {...register("name", {
-                        required: {
-                            value: true,
-                            message: "Поле обязательно!"
-                        },
-                    })}
-                    placeholder="имя"
-                    className={`w-full rounded-sm ${formState.errors.name ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
-                />
-                <input
-                    {...register("surname", {
-                        required: {
-                            value: true,
-                            message: "Поле обязательно!"
-                        },
-                    })}
-                    placeholder="фамилия"
-                    className={`w-full rounded-sm ${formState.errors.surname ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
-                />
-                <input
-                    {...register("phone", {
-                        valueAsNumber: true,
-                        required: {
-                            value: true,
-                            message: "Поле обязательно!"
-                        },
-                        minLength: {
-                            value: 11,
-                            message: "Номер должен содержать 11 цифр"
-                        },
-                        maxLength: {
-                            value: 11,
-                            message: "Номер должен содержать 11 цифр"
-                        }
-                    })}
-                    type="number"
-                    placeholder="номер телефона (8...)"
-                    className={`w-full rounded-sm ${formState.errors.phone ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
-                />
+            >   
+                <div className="w-full">
+                    <input
+                        {...register("name", {
+                            required: {
+                                value: true,
+                                message: "Поле обязательно!"
+                            },
+                        })}
+                        placeholder="имя"
+                        className={`w-full rounded-sm ${formState.errors.name ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
+                    />
+                    <p className="text-[12px] text-red-400">{formState.errors.name?.message}</p>
+                </div>
+                <div className="w-full">
+                    <input
+                        {...register("surname", {
+                            required: {
+                                value: true,
+                                message: "Поле обязательно!"
+                            },
+                        })}
+                        placeholder="фамилия"
+                        className={`w-full rounded-sm ${formState.errors.surname ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
+                    />
+                    <p className="text-[12px] text-red-400">{formState.errors.surname?.message}</p>
+                </div>
+                <div className="w-full">
+                    <input
+                        {...register("phone", {
+                            valueAsNumber: true,
+                            required: {
+                                value: true,
+                                message: "Поле обязательно!"
+                            },
+                            minLength: {
+                                value: 11,
+                                message: "Номер должен содержать 11 цифр"
+                            },
+                            maxLength: {
+                                value: 11,
+                                message: "Номер должен содержать 11 цифр"
+                            },
+                            validate: {
+                                isPhoneNumberOccupied: async (fieldValue) => {
+                                    const possiblyExistingApplication = await axios.get(`http://localhost:8000/applications?phone=${fieldValue}`)
+                                    if (possiblyExistingApplication.data.length > 0) {
+                                        return "Номер телефона занят"
+                                    }
+                                }
+                            }
+                        })}
+                        type="number"
+                        placeholder="номер телефона (8...)"
+                        className={`w-full rounded-sm ${formState.errors.phone ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
+                    />
+                    <p className="text-[12px] text-red-400">{formState.errors.phone?.message}</p>
+                </div>
                 <label>Укажите удобное время занятий:</label>
-                <input
-                    type="date"
-                    {...register("preferred_date", {
-                        required: {
-                            value: true,
-                            message: "Поле обязательно!"
-                        },
-                        valueAsDate: true
-                    })}
-                    className={`w-full rounded-sm ${formState.errors.preferred_date ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
-                />
-                <input
-                    type="time"
-                    {...register("preferred_time", {
-                        required: {
-                            value: true,
-                            message: "Поле обязательно!"
-                        },
-                    })}
-                    className={`w-full rounded-sm ${formState.errors.preferred_time ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
-                />
+                <div className="w-full">
+                    <input
+                        type="date"
+                        {...register("preferred_date", {
+                            required: {
+                                value: true,
+                                message: "Поле обязательно!"
+                            },
+                            valueAsDate: true
+                        })}
+                        className={`w-full rounded-sm ${formState.errors.preferred_date ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
+                    />
+                    <p className="text-[12px] text-red-400">{formState.errors.preferred_date?.message}</p>
+                </div>
+                <div className="w-full">
+                    <input
+                        type="time"
+                        {...register("preferred_time", {
+                            required: {
+                                value: true,
+                                message: "Поле обязательно!"
+                            },
+                        })}
+                        className={`w-full rounded-sm ${formState.errors.preferred_time ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
+                    />
+                    <p className="text-[12px] text-red-400">{formState.errors.preferred_time?.message}</p>
+                </div>
                 <Button
                     type="submit"
                     className="w-full"
