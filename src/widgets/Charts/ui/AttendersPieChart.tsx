@@ -1,12 +1,14 @@
 "use client";
-import * as React from "react";
-import { Label, Pie, PieChart } from "recharts";
+
 import {
     ChartConfig,
     ChartContainer,
     ChartTooltip,
     ChartTooltipContent
 } from "@/shared/components/ui/Chart";
+import * as React from "react";
+import { Label, Pie, PieChart } from "recharts";
+
 const chartData = [
     { status: "completed", attenders: 4986, fill: "var(--color-completed)" },
     { status: "current", attenders: 1161, fill: "var(--color-current)" }

@@ -1,6 +1,8 @@
 "use client";
+
 import { signIn } from "next-auth/react";
 import { FC } from "react";
+
 import { SignInButtonProps } from "../model/signInButtonProps.types";
 
 export const SignInButton: FC<

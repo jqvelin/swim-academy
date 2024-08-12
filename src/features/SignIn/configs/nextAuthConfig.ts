@@ -1,6 +1,7 @@
 import { NextAuthOptions } from "next-auth";
-import YandexProvider from "next-auth/providers/yandex";
 import GoogleProvider from "next-auth/providers/google";
+import YandexProvider from "next-auth/providers/yandex";
+
 export const nextAuthConfig: NextAuthOptions = {
     providers: [
         YandexProvider({

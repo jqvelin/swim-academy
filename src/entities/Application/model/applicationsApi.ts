@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { Application } from "./application.types";
 
 export const applicationsApi = {

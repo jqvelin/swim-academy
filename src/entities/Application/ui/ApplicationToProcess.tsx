@@ -1,8 +1,5 @@
 "use client";
 
-import type { Application } from "../model/application.types";
-import { useApplicationStateMutation } from "../model/query-hooks/useApplicationStateMutation";
-import { useEffect, useState } from "react";
 import {
     Button,
     Modal,
@@ -10,6 +7,10 @@ import {
     ModalFooter,
     ModalHeader
 } from "@/shared/components";
+import { useEffect, useState } from "react";
+
+import type { Application } from "../model/application.types";
+import { useApplicationStateMutation } from "../model/query-hooks/useApplicationStateMutation";
 
 export const ApplicationToProcess = ({
     application

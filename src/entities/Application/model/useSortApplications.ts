@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+
 import { Application } from "./application.types";
 
 export const useSortApplications = (data: Application[]) => {

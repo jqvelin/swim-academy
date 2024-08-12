@@ -13,9 +13,12 @@ export const ApplicationDtoSchema = z.object({
 export const ApplicationFormSchema = z.object({
     name: z.string().min(1, "Поле обязательно!"),
     surname: z.string().min(1, "Поле обязательно!"),
-    phone: z.number().min(11, "Номер должен содержать 11 символов!").max(11, "Номер должен содержать 11 символов!"),
+    phone: z
+        .number()
+        .min(11, "Номер должен содержать 11 символов!")
+        .max(11, "Номер должен содержать 11 символов!"),
     preferred_date: z.date().min(new Date(), "Поле обязаельно"),
     preferred_time: z.string().min(1, "Поле обязательно")
-})
+});
 
-export type ApplicationFormValues = z.infer<typeof ApplicationFormSchema>
+export type ApplicationFormValues = z.infer<typeof ApplicationFormSchema>;

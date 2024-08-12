@@ -1,5 +1,6 @@
 import { fromJSON } from "postcss";
 import type { Config } from "tailwindcss";
+
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 const HEADER_HEIGHT = "4.";

@@ -2,8 +2,9 @@
 
 import { Button } from "@/shared/components";
 import { useForm } from "react-hook-form";
-import { FormValues } from "../model/signInForm.types";
 import type { SubmitHandler } from "react-hook-form";
+
+import { FormValues } from "../model/signInForm.types";
 import { useFormFieldsState } from "../model/useSignInFieldsState";
 
 export const SignInForm = () => {

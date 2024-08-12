@@ -7,6 +7,15 @@
     "jsxSingleQuote": false,
     "singleAttributePerLine": true,
     "plugins": ["prettier-plugin-tailwindcss", "@trivago/prettier-plugin-sort-imports"],
-    "importOrder": ["^@6_shared/(.*)$", "^@5_entities/(.*)$", "<THIRD_PARTY_MODULES>", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],    "importOrderSeparation": true, 
+    "importOrder": [
+        "^@src/shared/(.*)$",
+        "^@src/entities/(.*)$",
+        "^@src/features/(.*)$",
+        "^@src/widgets/(.*)$",
+        "^@src/pages/(.*)$",
+        "^@src/app/(.*)$",
+        "^[./]"
+    ],
+    "importOrderSeparation": true, 
     "importOrderSortSpecifiers": true 
 }

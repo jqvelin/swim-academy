@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
-import { applicationsApi } from "../applicationsApi";
+
 import { Application } from "../application.types";
+import { applicationsApi } from "../applicationsApi";
 
 export const useSendApplicationMutation = () => {
     return useMutation({

@@ -1,9 +1,5 @@
 import { SignInButton, SignInForm } from "@/features/SignIn";
-import {
-    faGithub,
-    faGoogle,
-    faYandex
-} from "@fortawesome/free-brands-svg-icons";
+import { faGoogle, faYandex } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 

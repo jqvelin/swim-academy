@@ -1,8 +1,10 @@
 "use client";
-import Image from "next/image";
+
+import { ProfileThumbnail } from "@/features/SignIn";
 import { Link } from "@/shared/components";
 import { useSession } from "next-auth/react";
-import { ProfileThumbnail } from "@/features/SignIn";
+import Image from "next/image";
+
 import { useIsHeaderStuck } from "../model/useIsHeaderStuck";
 
 export const Header = () => {

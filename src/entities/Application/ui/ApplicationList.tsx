@@ -1,8 +1,5 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useGetAllApplications } from "../model/query-hooks/useGetAllApplications";
-import { ApplicationToProcess } from "./ApplicationToProcess";
 import {
     faCalendar,
     faCheck,
@@ -10,7 +7,11 @@ import {
     faPhone,
     faUser
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { useGetAllApplications } from "../model/query-hooks/useGetAllApplications";
 import { useSortApplications } from "../model/useSortApplications";
+import { ApplicationToProcess } from "./ApplicationToProcess";
 
 export const ApplicationList = () => {
     const { data } = useGetAllApplications();

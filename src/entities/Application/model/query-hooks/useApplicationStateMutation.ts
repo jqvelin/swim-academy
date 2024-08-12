@@ -1,9 +1,10 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { applicationsApi } from "../applicationsApi";
-import { Application } from "../application.types";
 import { AxiosResponse } from "axios";
+
+import { Application } from "../application.types";
+import { applicationsApi } from "../applicationsApi";
 
 export const useApplicationStateMutation = () => {
     const queryClient = useQueryClient();

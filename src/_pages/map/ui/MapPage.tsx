@@ -1,5 +1,5 @@
-import { Map } from "@/widgets/Map";
 import { Link } from "@/shared/components";
+import { Map } from "@/widgets/Map";
 
 export const MapPage = () => {
     return (

@@ -1,12 +1,12 @@
 "use client";
 
+import { Link } from "@/shared/components";
 import {
     AttendersAreaChart,
     AttendersAreaChartStacked,
     AttendersPieChart
 } from "@/widgets/Charts";
 import { Header } from "@/widgets/Header";
-import { Link } from "@/shared/components";
 
 export const ReportPage = () => {
     return (

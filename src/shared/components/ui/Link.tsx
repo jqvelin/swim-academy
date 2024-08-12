@@ -1,7 +1,8 @@
 import NextLink from "next/link";
-import { LinkProps } from "../model/linkProps.types";
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
+
+import { LinkProps } from "../model/linkProps.types";
 
 export const Link: FC<LinkProps> = ({ href, className, scroll, children }) => {
     return (
