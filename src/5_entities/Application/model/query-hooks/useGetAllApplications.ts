@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { ApplicationDtoSchema } from "../applicationSchema";
+import { ApplicationDtoSchema } from "../application.schema";
 import { applicationsApi } from "@/6_shared/api";
 
 export const useGetAllApplications = () => {

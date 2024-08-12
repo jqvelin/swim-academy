@@ -7,7 +7,7 @@
       "phone": 89540254567,
       "preferred_date": "2024-08-04",
       "preferred_time": "10:00",
-      "isResolved": false
+      "isResolved": true
     },
     {
       "id": "2",
@@ -61,7 +61,7 @@
       "phone": 88006542849,
       "preferred_date": "2024-08-02",
       "preferred_time": "14:27",
-      "isResolved": false
+      "isResolved": true
     },
     {
       "id": "129729",

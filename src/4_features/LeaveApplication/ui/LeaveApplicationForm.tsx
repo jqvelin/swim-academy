@@ -1,23 +1,24 @@
 "use client";
 import { Button, Checkmark, formatDate, Link } from "@/6_shared/components";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { LeaveApplicationFormValues } from "../model/leaveApplicationForm.types";
 import { useState } from "react";
 import { Application } from "@/5_entities/Application";
 import { generateId } from "@/6_shared/utils";
 import { useSendApplicationMutation } from "@/5_entities/Application/model/query-hooks/useSendApplicationMutation";
 import axios from "axios";
-
+import { ApplicationFormSchema, type ApplicationFormValues } from "@/5_entities/Application"
+import { zodResolver } from "@hookform/resolvers/zod"
 export const LeaveApplicationForm = () => {
     const [isApplicationSent, setIsApplicationSent] = useState(false);
     const { mutateAsync: sendApplication } = useSendApplicationMutation();
 
     const { register, handleSubmit, formState } =
-        useForm<LeaveApplicationFormValues>({
-            mode: "onBlur"
+        useForm<ApplicationFormValues>({
+            mode: "onBlur",
+            resolver: zodResolver(ApplicationFormSchema)
         });
 
-    const onSubmit: SubmitHandler<LeaveApplicationFormValues> = async (
+    const onSubmit: SubmitHandler<ApplicationFormValues> = async (
         data
     ) => {
         const formattedDate = formatDate(data.preferred_date)
@@ -53,12 +54,7 @@ export const LeaveApplicationForm = () => {
             >   
                 <div className="w-full">
                     <input
-                        {...register("name", {
-                            required: {
-                                value: true,
-                                message: "Поле обязательно!"
-                            },
-                        })}
+                        {...register("name")}
                         placeholder="имя"
                         className={`w-full rounded-sm ${formState.errors.name ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                     />
@@ -66,12 +62,7 @@ export const LeaveApplicationForm = () => {
                 </div>
                 <div className="w-full">
                     <input
-                        {...register("surname", {
-                            required: {
-                                value: true,
-                                message: "Поле обязательно!"
-                            },
-                        })}
+                        {...register("surname")}
                         placeholder="фамилия"
                         className={`w-full rounded-sm ${formState.errors.surname ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                     />
@@ -80,19 +71,6 @@ export const LeaveApplicationForm = () => {
                 <div className="w-full">
                     <input
                         {...register("phone", {
-                            valueAsNumber: true,
-                            required: {
-                                value: true,
-                                message: "Поле обязательно!"
-                            },
-                            minLength: {
-                                value: 11,
-                                message: "Номер должен содержать 11 цифр"
-                            },
-                            maxLength: {
-                                value: 11,
-                                message: "Номер должен содержать 11 цифр"
-                            },
                             validate: {
                                 isPhoneNumberOccupied: async (fieldValue) => {
                                     const possiblyExistingApplication = await axios.get(`http://localhost:8000/applications?phone=${fieldValue}`)
@@ -113,10 +91,6 @@ export const LeaveApplicationForm = () => {
                     <input
                         type="date"
                         {...register("preferred_date", {
-                            required: {
-                                value: true,
-                                message: "Поле обязательно!"
-                            },
                             valueAsDate: true
                         })}
                         className={`w-full rounded-sm ${formState.errors.preferred_date ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
@@ -126,12 +100,7 @@ export const LeaveApplicationForm = () => {
                 <div className="w-full">
                     <input
                         type="time"
-                        {...register("preferred_time", {
-                            required: {
-                                value: true,
-                                message: "Поле обязательно!"
-                            },
-                        })}
+                        {...register("preferred_time")}
                         className={`w-full rounded-sm ${formState.errors.preferred_time ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                     />
                     <p className="text-[12px] text-red-400">{formState.errors.preferred_time?.message}</p>
