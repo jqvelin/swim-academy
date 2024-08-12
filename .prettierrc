@@ -6,5 +6,7 @@
     "singleQuote": false,
     "jsxSingleQuote": false,
     "singleAttributePerLine": true,
-    "plugins": ["prettier-plugin-tailwindcss"]
+    "plugins": ["prettier-plugin-tailwindcss", "@trivago/prettier-plugin-sort-imports"],
+    "importOrder": ["^@6_shared/(.*)$", "^@5_entities/(.*)$", "<THIRD_PARTY_MODULES>", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],    "importOrderSeparation": true, 
+    "importOrderSortSpecifiers": true 
 }

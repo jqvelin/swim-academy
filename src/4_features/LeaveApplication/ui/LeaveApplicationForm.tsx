@@ -1,13 +1,18 @@
 "use client";
-import { Button, Checkmark, formatDate, Link } from "@/6_shared/components";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
+
 import { Application } from "@/5_entities/Application";
-import { generateId } from "@/6_shared/utils";
+import {
+    ApplicationFormSchema,
+    type ApplicationFormValues
+} from "@/5_entities/Application";
 import { useSendApplicationMutation } from "@/5_entities/Application/model/query-hooks/useSendApplicationMutation";
+import { Button, Checkmark, Link, formatDate } from "@/6_shared/components";
+import { generateId } from "@/6_shared/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { ApplicationFormSchema, type ApplicationFormValues } from "@/5_entities/Application"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+
 export const LeaveApplicationForm = () => {
     const [isApplicationSent, setIsApplicationSent] = useState(false);
     const { mutateAsync: sendApplication } = useSendApplicationMutation();
@@ -18,10 +23,8 @@ export const LeaveApplicationForm = () => {
             resolver: zodResolver(ApplicationFormSchema)
         });
 
-    const onSubmit: SubmitHandler<ApplicationFormValues> = async (
-        data
-    ) => {
-        const formattedDate = formatDate(data.preferred_date)
+    const onSubmit: SubmitHandler<ApplicationFormValues> = async (data) => {
+        const formattedDate = formatDate(data.preferred_date);
         const application: Application = {
             ...data,
             preferred_date: formattedDate,
@@ -51,14 +54,16 @@ export const LeaveApplicationForm = () => {
             <form
                 className={`col-aligned w-full select-none gap-4 ${isApplicationSent && "pointer-events-none"}`}
                 onSubmit={handleSubmit(onSubmit)}
-            >   
+            >
                 <div className="w-full">
                     <input
                         {...register("name")}
                         placeholder="имя"
                         className={`w-full rounded-sm ${formState.errors.name ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                     />
-                    <p className="text-[12px] text-red-400">{formState.errors.name?.message}</p>
+                    <p className="text-[12px] text-red-400">
+                        {formState.errors.name?.message}
+                    </p>
                 </div>
                 <div className="w-full">
                     <input
@@ -66,16 +71,24 @@ export const LeaveApplicationForm = () => {
                         placeholder="фамилия"
                         className={`w-full rounded-sm ${formState.errors.surname ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                     />
-                    <p className="text-[12px] text-red-400">{formState.errors.surname?.message}</p>
+                    <p className="text-[12px] text-red-400">
+                        {formState.errors.surname?.message}
+                    </p>
                 </div>
                 <div className="w-full">
                     <input
                         {...register("phone", {
                             validate: {
                                 isPhoneNumberOccupied: async (fieldValue) => {
-                                    const possiblyExistingApplication = await axios.get(`http://localhost:8000/applications?phone=${fieldValue}`)
-                                    if (possiblyExistingApplication.data.length > 0) {
-                                        return "Номер телефона занят"
+                                    const possiblyExistingApplication =
+                                        await axios.get(
+                                            `http://localhost:8000/applications?phone=${fieldValue}`
+                                        );
+                                    if (
+                                        possiblyExistingApplication.data
+                                            .length > 0
+                                    ) {
+                                        return "Номер телефона занят";
                                     }
                                 }
                             }
@@ -84,7 +97,9 @@ export const LeaveApplicationForm = () => {
                         placeholder="номер телефона (8...)"
                         className={`w-full rounded-sm ${formState.errors.phone ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                     />
-                    <p className="text-[12px] text-red-400">{formState.errors.phone?.message}</p>
+                    <p className="text-[12px] text-red-400">
+                        {formState.errors.phone?.message}
+                    </p>
                 </div>
                 <label>Укажите удобное время занятий:</label>
                 <div className="w-full">
@@ -95,7 +110,9 @@ export const LeaveApplicationForm = () => {
                         })}
                         className={`w-full rounded-sm ${formState.errors.preferred_date ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                     />
-                    <p className="text-[12px] text-red-400">{formState.errors.preferred_date?.message}</p>
+                    <p className="text-[12px] text-red-400">
+                        {formState.errors.preferred_date?.message}
+                    </p>
                 </div>
                 <div className="w-full">
                     <input
@@ -103,7 +120,9 @@ export const LeaveApplicationForm = () => {
                         {...register("preferred_time")}
                         className={`w-full rounded-sm ${formState.errors.preferred_time ? "border-red-400 placeholder:text-red-400" : "border-cyan-dark"} border-[1px] bg-transparent px-4 py-2 outline-none transition-[border-color] focus:border-cyan-neon`}
                     />
-                    <p className="text-[12px] text-red-400">{formState.errors.preferred_time?.message}</p>
+                    <p className="text-[12px] text-red-400">
+                        {formState.errors.preferred_time?.message}
+                    </p>
                 </div>
                 <Button
                     type="submit"
