@@ -1,11 +1,13 @@
 "use client";
 
 import { ProfileThumbnail } from "@/features/SignIn";
-import { Link } from "@/shared/components";
-import { useSession } from "next-auth/react";
+import { Button, Link } from "@/shared/components";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
 import { useIsHeaderStuck } from "../model/useIsHeaderStuck";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDoorOpen, faSignOut } from "@fortawesome/free-solid-svg-icons";
 
 export const Header = () => {
     const session = useSession();
@@ -39,7 +41,12 @@ export const Header = () => {
                 </Link>
                 <div className="row-aligned gap-2">
                     {isUserSignedIn && (
-                        <ProfileThumbnail sessionData={session.data} />
+                        <>
+                            <ProfileThumbnail sessionData={session.data} />
+                            <Button onClick={() => signOut()} className="bg-transparent hover:bg-transparent border-2">
+                                <FontAwesomeIcon icon={faSignOut}/>
+                            </Button>
+                        </>
                     )}
                     <Link
                         href={isUserSignedIn ? "/application" : "/sign-in"}
