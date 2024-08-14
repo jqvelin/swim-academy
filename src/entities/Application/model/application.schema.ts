@@ -11,15 +11,15 @@ export const ApplicationDtoSchema = z.object({
 });
 
 export const ApplicationFormSchema = z.object({
-    name: z.string().min(1, "Поле обязательно!"),
-    surname: z.string().min(1, "Поле обязательно!"),
+    name: z.string().min(1, "Поле обязательно!").trim(),
+    surname: z.string().min(1, "Поле обязательно!").trim(),
     phone: z.number({errorMap: (issue, {defaultError}) => ({message: issue.code === "invalid_type" ? "Некорректный формат" : defaultError})}).min(1, "Поле обязательно").refine(data => { 
         const isStartingWithEight = data.toString().startsWith("8");
         const isLengthCorrect = data.toString().length === 11
 
         return isLengthCorrect && isStartingWithEight
     }, {message: "Некорректный формат"}),
-    preferred_date: z.date({errorMap: (issue, {defaultError}) => ({message: issue.code === "invalid_date" ? "Некорректный формат" : defaultError})}).min(new Date(), "Поле обязаельно"),
+    preferred_date: z.date({errorMap: (issue, {defaultError}) => ({message: issue.code === "invalid_date" ? "Некорректный формат" : defaultError})}).min(new Date(), "Поле обязательно"),
     preferred_time: z.string().min(1, "Поле обязательно")
 });
 

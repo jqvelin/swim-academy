@@ -6,17 +6,17 @@ import {
     type ApplicationFormValues
 } from "@/entities/Application";
 import { useSendApplicationMutation } from "@/entities/Application/model/query-hooks/useSendApplicationMutation";
-import { Button, Checkmark, Link, formatDate } from "@/shared/components";
-import { generateId } from "@/shared/utils";
+import { Button, Checkmark, Link, Modal, ModalContent, ModalFooter, formatDate } from "@/shared/components";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export const LeaveApplicationForm = () => {
     const [isApplicationSent, setIsApplicationSent] = useState(false);
     const { mutateAsync: sendApplication } = useSendApplicationMutation();
-
+    const session = useSession();
     const { register, handleSubmit, formState } =
         useForm<ApplicationFormValues>({
             mode: "onBlur",
@@ -28,7 +28,9 @@ export const LeaveApplicationForm = () => {
         const application: Application = {
             ...data,
             preferred_date: formattedDate,
-            id: generateId(),
+            // Пользователь не может попасть на страницу заявки, если он не выполнил вход.
+            // Поэтому, id всегда есть.
+            id: session.data?.user.id as string,
             isResolved: false
         };
 
@@ -41,15 +43,19 @@ export const LeaveApplicationForm = () => {
             className={`col-aligned gap-8 after:transition-all after:duration-1000 ${isApplicationSent ? "after:opacity-100" : "after:opacity-0"} after:blurry after:pointer-events-none after:absolute after:left-0 after:top-0 after:h-screen after:w-screen after:[content:'']`}
         >
             {isApplicationSent && (
-                <div className="col-aligned absolute left-1/2 top-1/2 z-10 w-[80%] -translate-x-1/2 -translate-y-1/2 animate-reveal gap-4 rounded-sm bg-blue-500/80 py-4 text-center md:w-auto md:px-8">
-                    <Checkmark />
-                    <p className="font-semibold">
-                        Заявка успешно отправлена.
-                        <br />
-                        Ожидайте звонка.
-                    </p>
-                    <Link href="/">На главную</Link>
-                </div>
+                <Modal>
+                    <ModalContent className="flex flex-col items-center text-center">
+                        <Checkmark />
+                            <p className="font-semibold">
+                                Заявка успешно отправлена.
+                                <br />
+                                Ожидайте звонка.
+                            </p>
+                    </ModalContent>
+                    <ModalFooter>
+                            <Link href="/" className="text-white font-normal">На главную</Link>
+                    </ModalFooter>
+                </Modal>
             )}
             <form
                 className={`col-aligned w-full select-none gap-4 ${isApplicationSent && "pointer-events-none"}`}

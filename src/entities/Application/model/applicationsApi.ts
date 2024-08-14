@@ -9,6 +9,10 @@ export const applicationsApi = {
         );
     },
 
+    getApplicationById(applicationId: string) {
+        return axios.get(`${process.env.NEXT_PUBLIC_BASE_API_URL}/applications/${applicationId}`)
+    },
+
     sendApplication(application: Application) {
         return axios.post(
             `${process.env.NEXT_PUBLIC_BASE_API_URL}/applications`,

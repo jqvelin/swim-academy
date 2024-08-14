@@ -4,7 +4,7 @@ export const Checkmark = ({ className }: { className?: string }) => {
     return (
         <svg
             className={twMerge(
-                "block aspect-square w-[56px] animate-[fill_.4s_ease-in-out_.4s_forwards] rounded-[1/2] stroke-[white] stroke-2 shadow-[inset_0_0_0_#7ac142] [stroke-miterlimit:10]",
+                "block aspect-square w-[56px] animate-[fill_.4s_ease-in-out_.4s_forwards] rounded-[1/2] stroke-[hsl(var(--blue-dark))] stroke-2 shadow-[inset_0_0_0_#7ac142] [stroke-miterlimit:10]",
                 className
             )}
             xmlns="http://www.w3.org/2000/svg"

@@ -30,7 +30,7 @@ export const Header = () => {
                         width={0}
                         height={0}
                         sizes="100vw"
-                        className="-ml-3 aspect-square w-14 md:w-16"
+                        className="-ml-3 aspect-square w-12 md:w-16"
                         alt="Logo"
                     />
                     <h1 className="text-sm font-bold uppercase md:text-lg">
@@ -43,7 +43,7 @@ export const Header = () => {
                     {isUserSignedIn && (
                         <>
                             <ProfileThumbnail sessionData={session.data} />
-                            <Button onClick={() => signOut()} className="bg-transparent hover:bg-transparent border-2">
+                            <Button onClick={() => signOut()} className="bg-transparent hover:bg-transparent border-2 p-1 h-auto">
                                 <FontAwesomeIcon icon={faSignOut}/>
                             </Button>
                         </>
@@ -56,7 +56,7 @@ export const Header = () => {
                     </Link>
                     <Link
                         href={isUserSignedIn ? "/application" : "/sign-in"}
-                        className="flex md:hidden"
+                        className="flex md:hidden text-[14px]"
                     >
                         Записаться
                     </Link>

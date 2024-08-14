@@ -6,12 +6,16 @@ import {
     ReactNode
 } from "react";
 import { twMerge } from "tailwind-merge";
+import { cn } from "../lib/utils";
 
-export const Modal = ({ children }: { children: ReactNode }) => {
+export const Modal: FC<
+PropsWithChildren<ComponentPropsWithoutRef<"p">> &
+    HTMLAttributes<HTMLParagraphElement>
+> = ({...props}) => {
     return (
-        <div className="blurry fixed left-0 top-0 grid h-full w-full place-items-center">
+        <div className={cn("blurry fixed left-0 top-0 grid h-full w-full place-items-center", props.className)}>
             <div className="w-[90%] rounded-md bg-white py-2 text-blue md:w-auto md:p-6">
-                {children}
+                {props.children}
             </div>
         </div>
     );
@@ -28,14 +32,20 @@ export const ModalHeader: FC<
     );
 };
 
-export const ModalContent = ({ children }: { children: ReactNode }) => {
-    return <div className="my-8 font-semibold">{children}</div>;
+export const ModalContent: FC<
+PropsWithChildren<ComponentPropsWithoutRef<"p">> &
+    HTMLAttributes<HTMLParagraphElement>
+> = ({...props}) => {
+    return <div className={cn("my-8 font-semibold", props.className)}>{props.children}</div>;
 };
 
-export const ModalFooter = ({ children }: { children: ReactNode }) => {
+export const ModalFooter: FC<
+PropsWithChildren<ComponentPropsWithoutRef<"p">> &
+    HTMLAttributes<HTMLParagraphElement>
+> = ({...props}) => {
     return (
-        <div className="row-aligned mt-auto justify-center gap-1">
-            {children}
+        <div className={cn("row-aligned mt-auto justify-center gap-1", props.className)}>
+            {props.children}
         </div>
     );
 };
