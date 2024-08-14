@@ -91,7 +91,8 @@ export const LeaveApplicationForm = () => {
                                         return "Номер телефона занят";
                                     }
                                 }
-                            }
+                            },
+                            valueAsNumber: true
                         })}
                         type="number"
                         placeholder="номер телефона (8...)"

@@ -56,41 +56,44 @@
 
 @layer base {
     html {
-        scroll-behavior: smooth;
+        @apply scroll-smooth;
+    }
+
+    ::-webkit-calendar-picker-indicator {
+        @apply invert;
+    }
+
+    img {
+        @apply pointer-events-none;
     }
 
     ::-webkit-scrollbar {
-        width: 10px;
+        @apply w-[10px];
     }
 
     ::-webkit-scrollbar-track {
-        background: hsl(var(--darkblue));
+        @apply bg-[hsl(var(--darkblue))];
     }
 
     ::-webkit-scrollbar-thumb {
-        background: hsl(var(--cyan-dark));
-        border-radius: 4px;
+        @apply rounded-[4px] bg-[hsl(var(--cyan-dark))];
     }
 }
 
 @layer utilities {
     .text-glowing {
-        text-shadow: 0 0 6px #ffffff;
+        @apply [text-shadow:0_0_6px_#ffffff];
     }
 
     .blurry {
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
+        @apply [-webkit-backdrop-filter:blur(5px)] [backdrop-filter:blur(5px)];
     }
 
     .row-aligned {
-        display: flex;
-        align-items: center;
+        @apply flex items-center;
     }
 
     .col-aligned {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @apply flex flex-col items-center;
     }
 }
