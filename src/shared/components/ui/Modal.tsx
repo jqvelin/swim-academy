@@ -13,7 +13,7 @@ PropsWithChildren<ComponentPropsWithoutRef<"p">> &
     HTMLAttributes<HTMLParagraphElement>
 > = ({...props}) => {
     return (
-        <div className={cn("blurry fixed left-0 top-0 grid h-full w-full place-items-center", props.className)}>
+        <div className={cn("blurry fixed z-[100] left-0 top-0 grid h-full w-full place-items-center", props.className)}>
             <div className="w-[90%] rounded-md bg-white py-2 text-blue md:w-auto md:p-6">
                 {props.children}
             </div>
@@ -36,7 +36,7 @@ export const ModalContent: FC<
 PropsWithChildren<ComponentPropsWithoutRef<"p">> &
     HTMLAttributes<HTMLParagraphElement>
 > = ({...props}) => {
-    return <div className={cn("my-8 font-semibold", props.className)}>{props.children}</div>;
+    return <div className={cn("my-8 z-[110] font-semibold", props.className)}>{props.children}</div>;
 };
 
 export const ModalFooter: FC<

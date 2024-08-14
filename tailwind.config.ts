@@ -22,9 +22,9 @@ const config = {
             "accordion-up": "accordion-up 0.2s ease-out",
             "running-line": "running-line 60s linear infinite",
             "running-line-reverse": "running-line 70s linear infinite reverse",
-            "up-down": "up-down 1.2s linear infinite",
-            "up-down-100": "up-down 1.2s 100ms linear infinite",
-            "up-down-200": "up-down 1.2s 200ms linear infinite",
+            "up-down": "up-down 1.2s -200ms linear infinite",
+            "up-down-100": "up-down 1.2s -100ms linear infinite",
+            "up-down-200": "up-down 1.2s linear infinite",
         },
         keyframes: {
             "slide-up": {

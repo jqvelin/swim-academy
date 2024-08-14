@@ -1,3 +1,4 @@
+import axios from "axios";
 import { z } from "zod";
 
 export const ApplicationDtoSchema = z.object({
@@ -13,12 +14,16 @@ export const ApplicationDtoSchema = z.object({
 export const ApplicationFormSchema = z.object({
     name: z.string().min(1, "Поле обязательно!").trim(),
     surname: z.string().min(1, "Поле обязательно!").trim(),
-    phone: z.number({errorMap: (issue, {defaultError}) => ({message: issue.code === "invalid_type" ? "Некорректный формат" : defaultError})}).min(1, "Поле обязательно").refine(data => { 
+    phone: z.number({errorMap: (issue, {defaultError}) => ({message: issue.code === "invalid_type" ? "Некорректный формат" : defaultError})}).min(1, "Поле обязательно").refine(async data => { 
         const isStartingWithEight = data.toString().startsWith("8");
         const isLengthCorrect = data.toString().length === 11
 
         return isLengthCorrect && isStartingWithEight
-    }, {message: "Некорректный формат"}),
+    }, {message: "Некорректный формат"}).refine(async data => {
+        const isOccupied = await axios.get(`http://localhost:8000/applications?phone=${data}`).then(res => res.data.length > 0)
+
+        return !isOccupied
+    }, {message: "Номер телефона занят"}),
     preferred_date: z.date({errorMap: (issue, {defaultError}) => ({message: issue.code === "invalid_date" ? "Некорректный формат" : defaultError})}).min(new Date(), "Поле обязательно"),
     preferred_time: z.string().min(1, "Поле обязательно")
 });
