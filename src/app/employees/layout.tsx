@@ -1,14 +1,8 @@
-import { ApplicationList } from "@/entities/Application";
-import { applicationsApi } from "@/shared/api";
+import { EmployeesPageNavbar } from "@/_pages/employees";
 import { Link } from "@/shared/components";
-import { QueryClient } from "@tanstack/react-query";
+import { ReactNode } from "react";
 
-export const ApplicationsPage = async () => {
-    const queryClient = new QueryClient();
-    await queryClient.prefetchQuery({
-        queryKey: ["applications"],
-        queryFn: applicationsApi.getAllApplications
-    });
+const Layout = ({ children }: { children: ReactNode }) => {
     return (
         <div className="col-aligned h-screen py-4">
             <Link
@@ -20,12 +14,15 @@ export const ApplicationsPage = async () => {
                 </h1>
             </Link>
             <h1 className="mb-8 text-center text-2xl font-bold md:text-4xl">
-                Список заявок на{" "}
+                Заявки на{" "}
                 {new Date().getDate() +
                     "." +
                     String(new Date().getMonth() + 1).padStart(2, "0")}
             </h1>
-            <ApplicationList />
+            <EmployeesPageNavbar />
+            {children}
         </div>
     );
 };
+
+export default Layout;

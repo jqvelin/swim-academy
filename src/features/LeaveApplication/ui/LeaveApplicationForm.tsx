@@ -6,7 +6,15 @@ import {
     type ApplicationFormValues
 } from "@/entities/Application";
 import { useSendApplicationMutation } from "@/entities/Application/model/query-hooks/useSendApplicationMutation";
-import { Button, Checkmark, Link, Modal, ModalContent, ModalFooter, formatDate } from "@/shared/components";
+import {
+    Button,
+    Checkmark,
+    Link,
+    Modal,
+    ModalContent,
+    ModalFooter,
+    formatDate
+} from "@/shared/components";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -46,14 +54,19 @@ export const LeaveApplicationForm = () => {
                 <Modal>
                     <ModalContent className="flex flex-col items-center text-center">
                         <Checkmark />
-                            <p className="font-semibold">
-                                Заявка успешно отправлена.
-                                <br />
-                                Ожидайте звонка.
-                            </p>
+                        <p className="font-semibold">
+                            Заявка успешно отправлена.
+                            <br />
+                            Ожидайте звонка.
+                        </p>
                     </ModalContent>
                     <ModalFooter>
-                            <Link href="/" className="text-white font-normal">На главную</Link>
+                        <Link
+                            href="/"
+                            className="text-white font-normal"
+                        >
+                            На главную
+                        </Link>
                     </ModalFooter>
                 </Modal>
             )}

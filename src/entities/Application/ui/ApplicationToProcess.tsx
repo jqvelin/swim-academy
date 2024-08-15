@@ -57,7 +57,7 @@ export const ApplicationToProcess = ({
                         disabled={isPending}
                         onChange={handleChangeApplicationState}
                         checked={application.isResolved}
-                        className="m-0 mx-auto grid aspect-square w-[24px] appearance-none place-content-center rounded-sm border-2 border-white bg-transparent before:aspect-square before:w-[16px] before:scale-0 before:bg-cyan-dark before:transition-all before:[content:''] checked:before:scale-100"
+                        className="m-0 mx-auto grid aspect-square w-[24px] appearance-none place-content-center rounded-sm border-2 border-white bg-transparent before:aspect-square before:w-[16px] before:scale-0 before:bg-gray-400 before:transition-all before:[content:''] checked:before:scale-100"
                     />
                 </td>
                 <td className="px-2 text-center">

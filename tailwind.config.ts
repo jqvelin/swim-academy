@@ -24,7 +24,7 @@ const config = {
             "running-line-reverse": "running-line 70s linear infinite reverse",
             "up-down": "up-down 1.2s -200ms linear infinite",
             "up-down-100": "up-down 1.2s -100ms linear infinite",
-            "up-down-200": "up-down 1.2s linear infinite",
+            "up-down-200": "up-down 1.2s linear infinite"
         },
         keyframes: {
             "slide-up": {
@@ -70,8 +70,8 @@ const config = {
             },
             "up-down": {
                 "0%": { bottom: "-50%" },
-                "50%": { bottom: "50%"},
-                "100%": { bottom: "-50%" },
+                "50%": { bottom: "50%" },
+                "100%": { bottom: "-50%" }
             }
         },
         extend: {

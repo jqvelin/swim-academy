@@ -2,12 +2,12 @@
 
 import { ProfileThumbnail } from "@/features/SignIn";
 import { Button, Link } from "@/shared/components";
+import { faDoorOpen, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
 import { useIsHeaderStuck } from "../model/useIsHeaderStuck";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDoorOpen, faSignOut } from "@fortawesome/free-solid-svg-icons";
 
 export const Header = () => {
     const session = useSession();
@@ -43,8 +43,11 @@ export const Header = () => {
                     {isUserSignedIn && (
                         <>
                             <ProfileThumbnail sessionData={session.data} />
-                            <Button onClick={() => signOut()} className="bg-transparent hover:bg-transparent border-2 p-1 h-auto">
-                                <FontAwesomeIcon icon={faSignOut}/>
+                            <Button
+                                onClick={() => signOut()}
+                                className="bg-transparent hover:bg-transparent border-2 p-1 h-auto"
+                            >
+                                <FontAwesomeIcon icon={faSignOut} />
                             </Button>
                         </>
                     )}

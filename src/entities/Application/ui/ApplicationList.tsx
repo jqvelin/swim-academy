@@ -1,13 +1,13 @@
 "use client";
 
 import {
-    faCalendar,
-    faCheck,
-    faClock,
-    faPhone,
-    faUser
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+    CalendarIcon,
+    CheckIcon,
+    ClockIcon,
+    PhoneIcon,
+    SortDescIcon,
+    UserIcon
+} from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { useGetAllApplications } from "../model/query-hooks/useGetAllApplications";
@@ -23,9 +23,10 @@ export const ApplicationList = () => {
     );
     return (
         <>
-            <div className="w-11/12 border-cyan-dark border-2 py-4 px-2 rounded-md mb-4">
+            <div className="w-11/12 border-cyan-dark border-2 py-4 px-2 rounded-md mb-8">
                 <div>
-                    <span>Сортировка: </span>
+                    <SortDescIcon className="inline mr-1" />
+                    <span className="mr-2">Сортировка:</span>
                     <select
                         onChange={(e) =>
                             setSortBy(e.target.value as "date" | "name")
@@ -51,45 +52,30 @@ export const ApplicationList = () => {
             <table className="w-11/12 text-center">
                 <thead>
                     <tr>
-                        <th>
-                            <FontAwesomeIcon
-                                icon={faCheck}
-                                className="mr-2"
-                            />
+                        <th className="pb-4">
+                            <CheckIcon className="inline mr-1" />
                             <span className="hidden md:inline">Обработана</span>
                         </th>
-                        <th>
-                            <FontAwesomeIcon
-                                icon={faUser}
-                                className="mr-2"
-                            />
+                        <th className="pb-4">
+                            <UserIcon className="inline mr-1" />
                             <span className="hidden md:inline">
                                 И.О. клиента
                             </span>
                         </th>
-                        <th>
-                            <FontAwesomeIcon
-                                icon={faCalendar}
-                                className="mr-2"
-                            />
+                        <th className="pb-4">
+                            <CalendarIcon className="inline mr-1" />
                             <span className="hidden md:inline">
                                 Предпочитаемый день занятия
                             </span>
                         </th>
-                        <th>
-                            <FontAwesomeIcon
-                                icon={faClock}
-                                className="mr-2"
-                            />
+                        <th className="pb-4">
+                            <ClockIcon className="inline mr-1" />
                             <span className="hidden md:inline">
                                 Предпочитаемое время занятия
                             </span>
                         </th>
-                        <th>
-                            <FontAwesomeIcon
-                                icon={faPhone}
-                                className="mr-2"
-                            />
+                        <th className="pb-4">
+                            <PhoneIcon className="inline mr-1" />
                             <span className="hidden md:inline">
                                 Контактный номер телефона
                             </span>
