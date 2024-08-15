@@ -8,7 +8,7 @@ export const EmployeesPageNavbar = () => {
     const pathname = usePathname();
 
     return (
-        <nav className="w-11/12 rounded-md mb-4 row-aligned gap-2">
+        <nav className="w-11/12 rounded-md mb-4 row-aligned justify-center md:justify-start gap-2 flex-wrap">
             <Link
                 href="applications"
                 className={`bg-transparent hover:bg-transparent ${pathname === "/employees/applications" ? "border-white" : "border-cyan-dark"} border-2 rounded-sm row-aligned gap-1`}

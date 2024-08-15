@@ -28,7 +28,7 @@ export const ApplicationsLineChart = () => {
     return (
         <ChartContainer
             config={chartConfig}
-            className="h-[200px] md:h-[250px]"
+            className="w-[90vw] h-auto max-w-[300px] md:max-w-[500px]"
         >
             <LineChart
                 accessibilityLayer

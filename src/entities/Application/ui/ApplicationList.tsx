@@ -23,7 +23,7 @@ export const ApplicationList = () => {
     );
     return (
         <>
-            <div className="w-11/12 border-cyan-dark border-2 py-4 px-2 rounded-md mb-8">
+            <div className="w-11/12 border-cyan-dark border-2 py-4 px-2 rounded-md mb-4 md:mb-8">
                 <div>
                     <SortDescIcon className="inline mr-1" />
                     <span className="mr-2">Сортировка:</span>
@@ -69,13 +69,13 @@ export const ApplicationList = () => {
                             </span>
                         </th>
                         <th className="pb-4">
-                            <ClockIcon className="inline mr-1" />
+                            <ClockIcon className="hidden md:inline mr-1" />
                             <span className="hidden md:inline">
                                 Предпочитаемое время занятия
                             </span>
                         </th>
                         <th className="pb-4">
-                            <PhoneIcon className="inline mr-1" />
+                            <PhoneIcon className="mr-1 hidden md:inline" />
                             <span className="hidden md:inline">
                                 Контактный номер телефона
                             </span>
