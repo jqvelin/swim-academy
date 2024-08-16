@@ -6,13 +6,15 @@ import {
     ClockIcon,
     PhoneIcon,
     SortDescIcon,
-    UserIcon
+    UserIcon,
+    PencilIcon
 } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { useGetAllApplications } from "../model/query-hooks/useGetAllApplications";
 import { useSortApplications } from "../model/useSortApplications";
 import { ApplicationToProcess } from "./ApplicationToProcess";
+import { Button } from "@/shared/components";
 
 export const ApplicationList = () => {
     const [sortBy, setSortBy] = useState<"date" | "name">("date");
@@ -23,7 +25,7 @@ export const ApplicationList = () => {
     );
     return (
         <>
-            <div className="w-11/12 border-cyan-dark border-2 py-4 px-2 rounded-md mb-4 md:mb-8">
+            <div className="w-11/12 border-cyan-dark row-aligned justify-between border-2 py-4 px-2 rounded-md mb-4 md:mb-8">
                 <div>
                     <SortDescIcon className="inline mr-1" />
                     <span className="mr-2">Сортировка:</span>
@@ -47,6 +49,12 @@ export const ApplicationList = () => {
                             По имени
                         </option>
                     </select>
+                </div>
+                <div className="row-aligned gap-1">
+                    <Button className="bg-transparent hover:bg-transparent text-xl border-2 p-0 w-10 aspect-square">
+                        <PencilIcon width={16}/>
+                    </Button>
+                    <Button className="bg-transparent hover:bg-transparent text-2xl border-2 p-0 w-10 aspect-square">+</Button>
                 </div>
             </div>
             <table className="w-11/12 text-center">
