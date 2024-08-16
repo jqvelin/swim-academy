@@ -1,9 +1,9 @@
+"use client"
 import {
     ComponentPropsWithoutRef,
     FC,
     HTMLAttributes,
     PropsWithChildren,
-    ReactNode
 } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -11,7 +11,7 @@ import { cn } from "../lib/utils";
 
 export const Modal: FC<
     PropsWithChildren<ComponentPropsWithoutRef<"p">> &
-        HTMLAttributes<HTMLParagraphElement>
+        HTMLAttributes<HTMLParagraphElement> & {onClose?: () => void}
 > = ({ ...props }) => {
     return (
         <div
@@ -19,6 +19,7 @@ export const Modal: FC<
                 "blurry fixed z-[100] left-0 top-0 grid h-full w-full place-items-center",
                 props.className
             )}
+            onClick={props.onClose}
         >
             <div className="w-[90%] rounded-md bg-white py-2 text-blue md:w-auto md:p-6">
                 {props.children}

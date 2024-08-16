@@ -15,21 +15,27 @@ import {
     ModalFooter,
     formatDate
 } from "@/shared/components";
+import { generateId } from "@/shared/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-export const LeaveApplicationForm = () => {
+export const LeaveApplicationForm = ({createdManually = false}) => {
     const [isApplicationSent, setIsApplicationSent] = useState(false);
-    const { mutateAsync: sendApplication } = useSendApplicationMutation();
+    const { mutate: sendApplication } = useSendApplicationMutation();
     const session = useSession();
     const { register, handleSubmit, formState } =
         useForm<ApplicationFormValues>({
             mode: "onBlur",
             resolver: zodResolver(ApplicationFormSchema)
         });
+
+    const router = useRouter()
+    const queryClient = useQueryClient()
 
     const onSubmit: SubmitHandler<ApplicationFormValues> = async (data) => {
         const formattedDate = formatDate(data.preferred_date);
@@ -38,11 +44,12 @@ export const LeaveApplicationForm = () => {
             preferred_date: formattedDate,
             // Пользователь не может попасть на страницу заявки, если он не выполнил вход.
             // Поэтому, id всегда есть.
-            id: session.data?.user.id as string,
+            id: createdManually ? generateId() : session.data?.user.id as string,
             isResolved: false
         };
 
         await sendApplication(application);
+        queryClient.invalidateQueries({ queryKey: ["applications"] });
         setIsApplicationSent(true);
     };
 
@@ -61,12 +68,12 @@ export const LeaveApplicationForm = () => {
                         </p>
                     </ModalContent>
                     <ModalFooter>
-                        <Link
-                            href="/"
-                            className="text-white font-normal"
+                        <Button
+                            onClick={() => router.back()}
+                            className="text-cyan-neon border-2 border-cyan-dark bg-transparent hover:bg-transparent"
                         >
-                            На главную
-                        </Link>
+                            Готово
+                        </Button>
                     </ModalFooter>
                 </Modal>
             )}
@@ -74,7 +81,7 @@ export const LeaveApplicationForm = () => {
                 className={`col-aligned w-full select-none gap-4 ${isApplicationSent && "pointer-events-none"}`}
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <div className="w-full">
+                <div className="w-11/12 md:w-full">
                     <input
                         {...register("name")}
                         placeholder="имя"
@@ -84,7 +91,7 @@ export const LeaveApplicationForm = () => {
                         {formState.errors.name?.message}
                     </p>
                 </div>
-                <div className="w-full">
+                <div className="w-11/12 md:w-full">
                     <input
                         {...register("surname")}
                         placeholder="фамилия"
@@ -94,7 +101,7 @@ export const LeaveApplicationForm = () => {
                         {formState.errors.surname?.message}
                     </p>
                 </div>
-                <div className="w-full">
+                <div className="w-11/12 md:w-full">
                     <input
                         {...register("phone", {
                             validate: {
@@ -122,7 +129,7 @@ export const LeaveApplicationForm = () => {
                     </p>
                 </div>
                 <label>Укажите удобное время занятий:</label>
-                <div className="w-full">
+                <div className="w-11/12 md:w-full">
                     <input
                         type="date"
                         {...register("preferred_date", {
@@ -134,7 +141,7 @@ export const LeaveApplicationForm = () => {
                         {formState.errors.preferred_date?.message}
                     </p>
                 </div>
-                <div className="w-full">
+                <div className="w-11/12 md:w-full">
                     <input
                         type="time"
                         {...register("preferred_time")}
@@ -146,17 +153,18 @@ export const LeaveApplicationForm = () => {
                 </div>
                 <Button
                     type="submit"
-                    className="w-full"
+                    className="w-11/12 md:w-full"
+                    disabled={formState.isSubmitting || isApplicationSent}
                 >
                     Отправить
                 </Button>
             </form>
-            <Link
-                href="/"
-                className="w-full border-2 border-cyan-dark bg-transparent hover:bg-transparent"
+            <Button
+                onClick={() => router.back()}
+                className="text-cyan-neon w-11/12 md:w-full border-2 border-cyan-dark bg-transparent hover:bg-transparent"
             >
                 Назад
-            </Link>
+            </Button>
         </div>
     );
 };

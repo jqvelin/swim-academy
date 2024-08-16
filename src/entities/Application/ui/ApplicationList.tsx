@@ -14,10 +14,12 @@ import { useMemo, useState } from "react";
 import { useGetAllApplications } from "../model/query-hooks/useGetAllApplications";
 import { useSortApplications } from "../model/useSortApplications";
 import { ApplicationToProcess } from "./ApplicationToProcess";
-import { Button } from "@/shared/components";
+import { Button, Modal, ModalContent } from "@/shared/components";
+import { LeaveApplicationForm } from "@/features/LeaveApplication";
 
 export const ApplicationList = () => {
     const [sortBy, setSortBy] = useState<"date" | "name">("date");
+    const [isAddApplicationFormShown, setIsAddApplicationFormShown] = useState(false)
     const { data } = useGetAllApplications();
     const applications = useMemo(
         () => useSortApplications(data || [], sortBy),
@@ -54,9 +56,16 @@ export const ApplicationList = () => {
                     <Button className="bg-transparent hover:bg-transparent text-xl border-2 p-0 w-10 aspect-square">
                         <PencilIcon width={16}/>
                     </Button>
-                    <Button className="bg-transparent hover:bg-transparent text-2xl border-2 p-0 w-10 aspect-square">+</Button>
+                    <Button onClick={() => setIsAddApplicationFormShown(!isAddApplicationFormShown)} className="bg-transparent hover:bg-transparent text-2xl border-2 p-0 w-10 aspect-square">
+                        {isAddApplicationFormShown ? "x" : "+"}
+                    </Button>
                 </div>
             </div>
+            {isAddApplicationFormShown && <Modal onClose={() => setIsAddApplicationFormShown(false)}>
+                <ModalContent>
+                    <LeaveApplicationForm createdManually/>
+                </ModalContent>
+            </Modal>}
             <table className="w-11/12 text-center">
                 <thead>
                     <tr>

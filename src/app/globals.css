@@ -60,7 +60,7 @@
     }
 
     ::-webkit-calendar-picker-indicator {
-        @apply invert;
+        @apply bg-white rounded-sm w-4 h-4;
     }
 
     img {
