@@ -26,13 +26,10 @@ export const applicationsApi = {
         );
     },
 
-    changeApplicationState(
-        applicationId: Application["id"],
-        nextState: Application["isResolved"]
-    ) {
+    changeApplicationState(nextApplication: Application) {
         return axios.patch(
-            `${process.env.NEXT_PUBLIC_BASE_API_URL}/applications/${applicationId}`,
-            { isResolved: nextState }
+            `${process.env.NEXT_PUBLIC_BASE_API_URL}/applications/${nextApplication.id}`,
+            nextApplication
         );
     }
 };

@@ -9,13 +9,7 @@ import { applicationsApi } from "../applicationsApi";
 export const useApplicationStateMutation = () => {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: ({
-            applicationId,
-            nextState
-        }: {
-            applicationId: Application["id"];
-            nextState: Application["isResolved"];
-        }) => applicationsApi.changeApplicationState(applicationId, nextState),
+        mutationFn: (nextApplication: Application) => applicationsApi.changeApplicationState(nextApplication),
         mutationKey: ["applications"],
         onMutate: async (newApplicationData) => {
             await queryClient.cancelQueries({ queryKey: ["applications"] });
@@ -30,12 +24,9 @@ export const useApplicationStateMutation = () => {
                         data: oldApplicationData.data.map((application) => {
                             if (
                                 application.id ===
-                                newApplicationData.applicationId
+                                newApplicationData.id
                             ) {
-                                return {
-                                    ...application,
-                                    isResolved: newApplicationData.nextState
-                                };
+                                return newApplicationData;
                             }
                             return application;
                         })

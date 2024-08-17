@@ -2,15 +2,16 @@
 
 import { LeaveApplicationForm } from "@/features/LeaveApplication";
 import {
+    Button,
     Checkmark,
     Link,
     Modal,
     ModalContent,
-    ModalFooter,
-    ModalHeader
+    ModalFooter
 } from "@/shared/components";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export const LeaveApplicationPage = () => {
     const session = useSession();
@@ -19,15 +20,26 @@ export const LeaveApplicationPage = () => {
         queryFn: () => fetch(`http://localhost:8000/applications/${userId}`),
         queryKey: ["applications", userId],
         staleTime: 0
-    });
+    });    
+    
+    const router = useRouter()
+    
     if (possiblyExistingApplication?.status === 404) {
         return (
-            <div className="col-aligned h-screen justify-center">
+            <div className="col-aligned h-screen justify-center px-2">
                 <div className="col-aligned">
-                    <h1 className="mb-8 bg-gradient-to-r from-red-300 to-purple-300 bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
+                    <h1 className="mb-8 bg-gradient-to-r from-red-300 to-purple-300 bg-clip-text text-2xl font-bold text-transparent md:text-4xl">
                         Оставьте заявку
                     </h1>
-                    <LeaveApplicationForm />
+                    <div className="col-aligned">
+                        <LeaveApplicationForm />
+                        <Button
+                            onClick={() => router.back()}
+                            className="text-cyan-neon w-11/12 md:w-full mt-8 border-2 border-cyan-dark bg-transparent hover:bg-transparent"
+                        >
+                            Назад
+                        </Button>
+                    </div>
                 </div>
             </div>
         );

@@ -7,7 +7,7 @@
       "phone": 89540254567,
       "preferred_date": "2024-08-04",
       "preferred_time": "10:00",
-      "isResolved": true
+      "isResolved": false
     },
     {
       "id": "2",
@@ -60,8 +60,8 @@
       "surname": "Freeman",
       "phone": 88006542849,
       "preferred_date": "2024-08-02",
-      "preferred_time": "14:27",
-      "isResolved": true
+      "preferred_time": "14:30",
+      "isResolved": false
     },
     {
       "id": "124634",
@@ -70,15 +70,6 @@
       "phone": 89052384266,
       "preferred_date": "2024-08-13",
       "preferred_time": "15:57",
-      "isResolved": false
-    },
-    {
-      "id": "112853298346825613331",
-      "name": "Jack",
-      "surname": "London",
-      "phone": 84922483554,
-      "preferred_date": "2024-08-17",
-      "preferred_time": "20:39",
       "isResolved": false
     }
   ]

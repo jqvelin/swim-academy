@@ -4,4 +4,5 @@ export { Button, buttonVariants } from "./ui/Button";
 export { Checkmark } from "./ui/Checkmark";
 export { Loader } from "./ui/Loader";
 export { Modal, ModalHeader, ModalContent, ModalFooter } from "./ui/Modal";
+export { TextInput } from "./ui/TextInput";
 export { formatDate } from "./lib/utils";

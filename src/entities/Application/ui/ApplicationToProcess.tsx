@@ -5,11 +5,11 @@ import {
     Modal,
     ModalContent,
     ModalFooter,
-    ModalHeader
+    ModalHeader,
+    TextInput,
 } from "@/shared/components";
+import { ClockIcon, PencilIcon, PhoneIcon, TriangleIcon, CheckIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-
-import { TriangleIcon, ClockIcon, PhoneIcon } from "lucide-react"
 
 import type { Application } from "../model/application.types";
 import { useApplicationStateMutation } from "../model/query-hooks/useApplicationStateMutation";
@@ -22,6 +22,8 @@ export const ApplicationToProcess = ({
     const [isConfirmationShown, setIsCofirmationShown] = useState(false);
     const [isErrorModalShown, setIsErrorModalShown] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [editableApplicationContent, setEditableApplicationContent] =
+        useState<null | Application>(null);
 
     useEffect(() => {
         document.body.style.overflow = isConfirmationShown ? "hidden" : "auto";
@@ -43,11 +45,17 @@ export const ApplicationToProcess = ({
             return;
         }
         setIsCofirmationShown(false);
-        changeApplicationState({
-            applicationId: application.id,
-            nextState: !application.isResolved
-        });
+        changeApplicationState({...application, isResolved: !application.isResolved});
     };
+
+    const handleEditApplication = () => {
+        if (!editableApplicationContent) {
+            setEditableApplicationContent({...application})
+            return
+        }
+        editableApplicationContent && changeApplicationState(editableApplicationContent)
+        setEditableApplicationContent(null)
+    }
 
     return (
         <>
@@ -64,24 +72,101 @@ export const ApplicationToProcess = ({
                     />
                 </td>
                 <td className="md:px-2 text-center">
-                    <span>{application.name + " " + application.surname}</span>
+                    {editableApplicationContent ? (
+                        <div className="row-aligned gap-1">
+                            <TextInput
+                                value={editableApplicationContent.name}
+                                onChange={(e) =>
+                                    setEditableApplicationContent({
+                                        ...editableApplicationContent,
+                                        name: e.target.value
+                                    })
+                                }
+                                className="px-1 text-center"
+                            />
+                            <TextInput
+                                value={editableApplicationContent.surname}
+                                onChange={(e) =>
+                                    setEditableApplicationContent({
+                                        ...editableApplicationContent,
+                                        surname: e.target.value
+                                    })
+                                }
+                                className="px-1 text-center"
+                            />
+                        </div>
+                    ) : (
+                        <span>
+                            {application.name + " " + application.surname}
+                        </span>
+                    )}
                 </td>
                 <td className="md:px-2 text-center">
-                    <span>{application.preferred_date}</span>
+                    {editableApplicationContent ? (
+                        <TextInput
+                            value={editableApplicationContent.preferred_date}
+                            onChange={(e) =>
+                                setEditableApplicationContent({
+                                    ...editableApplicationContent,
+                                    preferred_date: e.target.value
+                                })
+                            }
+                            className="px-1 text-center"
+                        />
+                    ) : (
+                        <span>{application.preferred_date}</span>
+                    )}
                 </td>
                 <td className="md:px-2 text-center">
-                    <span className="hidden md:inline">{application.preferred_time}</span>
-
+                    {editableApplicationContent ? (
+                        <TextInput
+                            value={editableApplicationContent.preferred_time}
+                            onChange={(e) =>
+                                setEditableApplicationContent({
+                                    ...editableApplicationContent,
+                                    preferred_time: e.target.value
+                                })
+                            }
+                            className="px-1 text-center hidden md:inline"
+                        />
+                    ) : (
+                        <span className="hidden md:inline">
+                            {application.preferred_time}
+                        </span>
+                    )}
                 </td>
                 <td className="md:px-2 text-center">
-                    <a
-                        className="w-[50px] overflow-hidden text-ellipsis md:w-auto hidden md:inline"
-                        href={`tel:${application.phone}`}
+                    {editableApplicationContent ? (
+                        <TextInput
+                            value={editableApplicationContent.phone}
+                            onChange={(e) =>
+                                setEditableApplicationContent({
+                                    ...editableApplicationContent,
+                                    phone: parseInt(e.target.value)
+                                })
+                            }
+                            className="px-1 text-center hidden md:inline"
+                        />
+                    ) : (
+                        <a
+                            className="w-[50px] overflow-hidden text-ellipsis md:w-auto hidden md:inline"
+                            href={`tel:${application.phone}`}
+                        >
+                            {application.phone}
+                        </a>
+                    )}
+                    <Button
+                        className="[all:initial] hover:bg-transparent"
+                        onClick={() => setIsExpanded(!isExpanded)}
                     >
-                        {application.phone}
-                    </a>
-                    <Button className="[all:initial] hover:bg-transparent" onClick={() => setIsExpanded(!isExpanded)}>
-                        <TriangleIcon className={`inline md:hidden ${ isExpanded && "rotate-180"} fill-white w-[14px]`} />
+                        <TriangleIcon
+                            className={`inline md:hidden ${isExpanded && "rotate-180"} fill-white w-[16px]`}
+                        />
+                    </Button>
+                </td>
+                <td>
+                    <Button onClick={handleEditApplication} className="bg-transparent hover:bg-transparent text-xl border-2 p-0 w-10 aspect-square">
+                        {editableApplicationContent ? <CheckIcon width={16} /> : <PencilIcon width={16} />}
                     </Button>
                 </td>
             </tr>
@@ -133,14 +218,43 @@ export const ApplicationToProcess = ({
                     </td>
                 </tr>
             )}
-            <tr className={`inline md:hidden text-[12px] overflow-hidden transition-all ${isExpanded ? "hidden" : ""}`}>
+
+            <tr
+                className={`inline md:hidden text-[12px] overflow-hidden transition-all ${isExpanded ? "hidden" : ""}`}
+            >
                 <td className="text-center px-1 row-aligned gap-1">
                     <ClockIcon className="w-[14px]" />
-                    <span>{application.preferred_time}</span>
+                    {editableApplicationContent ? (
+                        <TextInput
+                            value={editableApplicationContent.preferred_time}
+                            onChange={(e) =>
+                                setEditableApplicationContent({
+                                    ...editableApplicationContent,
+                                    preferred_time: e.target.value
+                                })
+                            }
+                            className="p-1 text-center"
+                        />
+                    ) : (
+                        <span>{application.preferred_time}</span>
+                    )}
                 </td>
                 <td className="text-center px-1 row-aligned gap-1">
-                    <PhoneIcon className="w-[14px]"/>
-                    <span>{application.phone}</span>
+                    <PhoneIcon className="w-[14px]" />
+                    {editableApplicationContent ? (
+                        <TextInput
+                            value={editableApplicationContent.phone}
+                            onChange={(e) =>
+                                setEditableApplicationContent({
+                                    ...editableApplicationContent,
+                                    phone: parseInt(e.target.value)
+                                })
+                            }
+                            className="p-1 text-center"
+                        />
+                    ) : (
+                        <span>{application.phone}</span>
+                    )}
                 </td>
             </tr>
         </>

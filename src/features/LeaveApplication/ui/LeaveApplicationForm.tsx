@@ -159,12 +159,6 @@ export const LeaveApplicationForm = ({createdManually = false}) => {
                     Отправить
                 </Button>
             </form>
-            <Button
-                onClick={() => router.back()}
-                className="text-cyan-neon w-11/12 md:w-full border-2 border-cyan-dark bg-transparent hover:bg-transparent"
-            >
-                Назад
-            </Button>
         </div>
     );
 };

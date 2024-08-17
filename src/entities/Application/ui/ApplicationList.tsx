@@ -6,8 +6,7 @@ import {
     ClockIcon,
     PhoneIcon,
     SortDescIcon,
-    UserIcon,
-    PencilIcon
+    UserIcon
 } from "lucide-react";
 import { useMemo, useState } from "react";
 
@@ -52,14 +51,9 @@ export const ApplicationList = () => {
                         </option>
                     </select>
                 </div>
-                <div className="row-aligned gap-1">
-                    <Button className="bg-transparent hover:bg-transparent text-xl border-2 p-0 w-10 aspect-square">
-                        <PencilIcon width={16}/>
-                    </Button>
-                    <Button onClick={() => setIsAddApplicationFormShown(!isAddApplicationFormShown)} className="bg-transparent hover:bg-transparent text-2xl border-2 p-0 w-10 aspect-square">
-                        {isAddApplicationFormShown ? "x" : "+"}
-                    </Button>
-                </div>
+                <Button onClick={() => setIsAddApplicationFormShown(!isAddApplicationFormShown)} className="bg-transparent hover:bg-transparent text-2xl border-2 p-0 w-10 aspect-square">
+                    {isAddApplicationFormShown ? "x" : "+"}
+                </Button>
             </div>
             {isAddApplicationFormShown && <Modal onClose={() => setIsAddApplicationFormShown(false)}>
                 <ModalContent>
