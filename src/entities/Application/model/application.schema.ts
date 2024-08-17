@@ -51,8 +51,7 @@ export const ApplicationFormSchema = z.object({
                         ? "Некорректный формат"
                         : defaultError
             })
-        })
-        .min(new Date(), "Поле обязательно"),
+        }),
     preferred_time: z.string().min(1, "Поле обязательно")
 });
 

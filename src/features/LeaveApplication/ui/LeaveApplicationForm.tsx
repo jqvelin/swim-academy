@@ -1,7 +1,7 @@
 "use client";
 
-import { Application } from "@/entities/Application";
 import {
+    Application,
     ApplicationFormSchema,
     type ApplicationFormValues
 } from "@/entities/Application";

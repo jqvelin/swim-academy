@@ -6,25 +6,29 @@ import {
     ChartTooltip,
     ChartTooltipContent
 } from "@/shared/components/ui/Chart";
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+import { useGetAllApplications } from "../model/query-hooks/useGetAllApplications";
+import { useGetApplicationsChartData } from "../model/hooks/useGetApplicationsChartData";
 
-const chartData = [
+/* const chartData = [
     { month: "January", desktop: 186 },
     { month: "February", desktop: 305 },
     { month: "March", desktop: 237 },
     { month: "April", desktop: 73 },
     { month: "May", desktop: 209 },
     { month: "June", desktop: 214 }
-];
+]; */
 
 const chartConfig = {
-    desktop: {
-        label: "Desktop",
+    applicationsQty: {
+        label: "Заявок",
         color: "hsl(var(--chart-1))"
     }
 } satisfies ChartConfig;
 
 export const ApplicationsLineChart = () => {
+    const { data } = useGetAllApplications()
+    const chartData = useGetApplicationsChartData(data ?? [])
     return (
         <ChartContainer
             config={chartConfig}
@@ -40,20 +44,26 @@ export const ApplicationsLineChart = () => {
             >
                 <CartesianGrid vertical={false} />
                 <XAxis
-                    dataKey="month"
+                    dataKey="day"
                     tickLine={false}
                     axisLine={false}
-                    tickMargin={8}
-                    tickFormatter={(value) => value.slice(0, 3)}
+                    tickMargin={10}
+                    tickFormatter={(value) => value.slice(0, 5)}
+                />
+                <YAxis
+                    tickLine={false}
+                    axisLine={false}
+                    tickMargin={10}
+                    tickCount={2}
                 />
                 <ChartTooltip
                     cursor={false}
                     content={<ChartTooltipContent hideLabel />}
                 />
                 <Line
-                    dataKey="desktop"
+                    dataKey="applicationsQty"
                     type="linear"
-                    stroke="var(--color-desktop)"
+                    stroke="hsl(var(--cyan-neon))"
                     strokeWidth={2}
                     dot={false}
                 />
