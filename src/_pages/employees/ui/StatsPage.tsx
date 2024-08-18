@@ -16,16 +16,16 @@ export const StatsPage = ({
             <div className="flex flex-col md:flex-row w-full">
                 <aside className="md:mr-auto flex flex-row justify-center md:justify-start md:flex-col mb-4 gap-2">
                     <Link
-                        href={`stats?type=overall`}
-                        className={`bg-transparent hover:bg-transparent ${searchParams.type !== "byAgeAndGender" ? "border-white" : "border-cyan-dark"} border-2 rounded-sm row-aligned gap-1`}
+                        href={`stats`}
+                        className={`bg-transparent hover:bg-transparent ${searchParams.type !== "ratio" ? "border-white" : "border-cyan-dark"} border-2 rounded-sm row-aligned gap-1`}
                     >
                         Общая активность
                     </Link>
                     <Link
-                        href={`stats?type=byAgeAndGender`}
-                        className={`bg-transparent hover:bg-transparent ${searchParams.type === "byAgeAndGender" ? "border-white" : "border-cyan-dark"} border-2 rounded-sm row-aligned gap-1`}
+                        href={`stats?type=ratio`}
+                        className={`bg-transparent hover:bg-transparent ${searchParams.type === "ratio" ? "border-white" : "border-cyan-dark"} border-2 rounded-sm row-aligned gap-1`}
                     >
-                        Пол/возраст
+                        Соотношение
                     </Link>
                 </aside>
                 <section className="mx-auto md:mr-auto md:mx-0">

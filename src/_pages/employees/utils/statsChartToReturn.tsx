@@ -5,7 +5,7 @@ import {
 
 export const statsChatToReturn = (searchParams: { [key: string]: string }) => {
     switch (searchParams.type) {
-        case "byAgeAndGender": {
+        case "ratio": {
             return <ApplicationsPieChart />;
         }
         default: {
