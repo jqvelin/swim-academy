@@ -1,6 +1,5 @@
 "use client";
 
-import { Link } from "@/shared/components";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 

@@ -1,4 +1,5 @@
 import { Link } from "@/shared/components";
+import { paths } from "@/shared/routing";
 import { Map } from "@/widgets/Map";
 
 export const MapPage = () => {
@@ -9,7 +10,7 @@ export const MapPage = () => {
                     Бассейны Swim Academy
                 </h1>
                 <Link
-                    href="/"
+                    href={paths.root}
                     className="absolute right-0 top-0"
                 >
                     Закрыть

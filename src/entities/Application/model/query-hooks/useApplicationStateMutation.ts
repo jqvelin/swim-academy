@@ -9,7 +9,8 @@ import { applicationsApi } from "../applicationsApi";
 export const useApplicationStateMutation = () => {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: (nextApplication: Application) => applicationsApi.changeApplicationState(nextApplication),
+        mutationFn: (nextApplication: Application) =>
+            applicationsApi.changeApplicationState(nextApplication),
         mutationKey: ["applications"],
         onMutate: async (newApplicationData) => {
             await queryClient.cancelQueries({ queryKey: ["applications"] });
@@ -22,10 +23,7 @@ export const useApplicationStateMutation = () => {
                     return {
                         ...oldApplicationData,
                         data: oldApplicationData.data.map((application) => {
-                            if (
-                                application.id ===
-                                newApplicationData.id
-                            ) {
+                            if (application.id === newApplicationData.id) {
                                 return newApplicationData;
                             }
                             return application;

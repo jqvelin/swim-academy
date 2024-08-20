@@ -1,4 +1,5 @@
 import { Link } from "@/shared/components";
+import { paths } from "@/shared/routing";
 import Image from "next/image";
 
 export const Introduction = () => {
@@ -17,7 +18,7 @@ export const Introduction = () => {
                     <br />
                     ~30% наших выпускников ежегодно призываются в сборную
                 </p>
-                <Link href="/report">Смотреть отчёт за 2023г.</Link>
+                <Link href={paths.report}>Смотреть отчёт за 2023г.</Link>
             </div>
             <Image
                 src="/swimmer.png"

@@ -2,6 +2,7 @@
 
 import { ProfileThumbnail } from "@/features/SignIn";
 import { Button, Link } from "@/shared/components";
+import { paths } from "@/shared/routing";
 import { faDoorOpen, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut, useSession } from "next-auth/react";
@@ -22,7 +23,7 @@ export const Header = () => {
                 className={`fixed left-[50%] h-[var(--header-height)] w-section-mobile md:w-section-regular ${isHeaderStuck ? "top-0" : "top-[5rem]"} row-aligned z-50 -translate-x-[50%] justify-between px-2 duration-500`}
             >
                 <Link
-                    href="/"
+                    href={paths.root}
                     className="h-auto -translate-x-4 bg-transparent text-start hover:bg-transparent"
                 >
                     <Image
@@ -52,13 +53,13 @@ export const Header = () => {
                         </>
                     )}
                     <Link
-                        href={isUserSignedIn ? "/application" : "/sign-in"}
+                        href={isUserSignedIn ? paths.application : paths.signIn}
                         className="hidden md:flex"
                     >
                         Записаться на тренировку
                     </Link>
                     <Link
-                        href={isUserSignedIn ? "/application" : "/sign-in"}
+                        href={isUserSignedIn ? paths.application : paths.signIn}
                         className="flex md:hidden text-[14px]"
                     >
                         Записаться

@@ -43,15 +43,14 @@ export const ApplicationFormSchema = z.object({
             },
             { message: "Номер телефона занят" }
         ),
-    preferred_date: z
-        .date({
-            errorMap: (issue, { defaultError }) => ({
-                message:
-                    issue.code === "invalid_date"
-                        ? "Некорректный формат"
-                        : defaultError
-            })
-        }),
+    preferred_date: z.date({
+        errorMap: (issue, { defaultError }) => ({
+            message:
+                issue.code === "invalid_date"
+                    ? "Некорректный формат"
+                    : defaultError
+        })
+    }),
     preferred_time: z.string().min(1, "Поле обязательно")
 });
 

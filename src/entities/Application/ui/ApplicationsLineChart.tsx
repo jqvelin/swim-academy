@@ -85,8 +85,13 @@ export const ApplicationsLineChart = () => {
             </ChartContainer>
             {mostBusyDay.applicationsQty > 0 && (
                 <div className="text-center">
-                    <p>Самый загруженный день: <b>{mostBusyDay.date}</b></p>
-                    <p>Заявок на этот день: <b>{mostBusyDay.applicationsQty}</b></p>
+                    <p>
+                        Самый загруженный день: <b>{mostBusyDay.date}</b>
+                    </p>
+                    <p>
+                        Заявок на этот день:{" "}
+                        <b>{mostBusyDay.applicationsQty}</b>
+                    </p>
                 </div>
             )}
         </>

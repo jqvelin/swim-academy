@@ -1,4 +1,5 @@
 import { Link } from "@/shared/components";
+import { paths } from "@/shared/routing";
 
 export const Outro = () => {
     return (
@@ -51,7 +52,7 @@ export const Outro = () => {
                 Школа Swim Academy - это выбор будущих чемпионов!
             </h3>
             <Link
-                href="/application"
+                href={paths.application}
                 className="relative z-50"
             >
                 Присоединяйтесь к нам!

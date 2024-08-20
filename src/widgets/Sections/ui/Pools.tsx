@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "@/shared/components";
+import { paths } from "@/shared/routing";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 
@@ -30,7 +31,7 @@ export const Pools = () => {
                     существующих, либо посмотрите, какие будут открыты в будущем
                 </p>
                 <Link
-                    href="/map"
+                    href={paths.map}
                     scroll={false}
                 >
                     Увидеть на картах

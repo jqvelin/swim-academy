@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "@/shared/components";
+import { paths } from "@/shared/routing";
 import {
     AttendersAreaChart,
     AttendersAreaChartStacked,
@@ -43,12 +44,13 @@ export const ReportPage = () => {
                         Сотни из них до посещения Swim Academy испытывали боязнь
                         воды, но с помощью наших тренеров смогли перебороть
                         страхи.
-                        <br />В нашей школе каждый может научиться чему-то
-                        новому.
+                        <br />
+                        Впереди еще больше интересного - начните обучаться прямо
+                        сейчас и убедитесь в этом сами!
                     </p>
                 </div>
             </main>
-            <Link href="/">На главную</Link>
+            <Link href={paths.root}>На главную</Link>
         </div>
     );
 };

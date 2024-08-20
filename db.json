@@ -1,85 +1,85 @@
 {
-  "applications": [
-    {
-      "id": "1",
-      "name": "John",
-      "surname": "Doe",
-      "phone": 89540254567,
-      "preferred_date": "2024-08-04",
-      "preferred_time": "10:00",
-      "isResolved": true
-    },
-    {
-      "id": "2",
-      "name": "Mike",
-      "surname": "Williams",
-      "phone": 89524881293,
-      "preferred_date": "2024-08-17",
-      "preferred_time": "12:00",
-      "isResolved": false
-    },
-    {
-      "id": "3",
-      "name": "Alice",
-      "surname": "Cooper",
-      "phone": 86542812345,
-      "preferred_date": "2024-08-04",
-      "preferred_time": "16:00",
-      "isResolved": false
-    },
-    {
-      "id": "4",
-      "name": "Brandon",
-      "surname": "Rogers",
-      "phone": 89524920511,
-      "preferred_date": "2024-08-05",
-      "preferred_time": "15:30",
-      "isResolved": false
-    },
-    {
-      "id": "891703",
-      "name": "Michael",
-      "surname": "Faraday",
-      "phone": 89399739427,
-      "preferred_date": "2024-08-08",
-      "preferred_time": "21:30",
-      "isResolved": false
-    },
-    {
-      "id": "117351",
-      "name": "Josh",
-      "surname": "Bush",
-      "phone": 81234567890,
-      "preferred_date": "2024-08-11",
-      "preferred_time": "01:00",
-      "isResolved": true
-    },
-    {
-      "id": "955454",
-      "name": "Jeff",
-      "surname": "Freeman",
-      "phone": 88006542849,
-      "preferred_date": "2024-08-02",
-      "preferred_time": "14:30",
-      "isResolved": true
-    },
-    {
-      "id": "124634",
-      "name": "Michael",
-      "surname": "Jordan",
-      "phone": 89052384266,
-      "preferred_date": "2024-08-17",
-      "preferred_time": "15:57",
-      "isResolved": false
-    },
-    {
-      "id": "112853298346825613331",
-      "name": "Clams",
-      "surname": "Casino",
-      "phone": 84993852711,
-      "preferred_date": "2024-08-15",
-      "preferred_time": "07:10",
-      "isResolved": false
-    }
-  ]
+    "applications": [
+        {
+            "id": "1",
+            "name": "John",
+            "surname": "Doe",
+            "phone": 89540254567,
+            "preferred_date": "2024-08-04",
+            "preferred_time": "10:00",
+            "isResolved": true
+        },
+        {
+            "id": "2",
+            "name": "Mike",
+            "surname": "Williams",
+            "phone": 89524881293,
+            "preferred_date": "2024-08-17",
+            "preferred_time": "12:00",
+            "isResolved": false
+        },
+        {
+            "id": "3",
+            "name": "Alice",
+            "surname": "Cooper",
+            "phone": 86542812345,
+            "preferred_date": "2024-08-20",
+            "preferred_time": "16:00",
+            "isResolved": false
+        },
+        {
+            "id": "4",
+            "name": "Brandon",
+            "surname": "Rogers",
+            "phone": 89524920511,
+            "preferred_date": "2024-08-19",
+            "preferred_time": "15:30",
+            "isResolved": false
+        },
+        {
+            "id": "891703",
+            "name": "Michael",
+            "surname": "Faraday",
+            "phone": 89399739427,
+            "preferred_date": "2024-08-20",
+            "preferred_time": "21:30",
+            "isResolved": false
+        },
+        {
+            "id": "117351",
+            "name": "Josh",
+            "surname": "Bush",
+            "phone": 81234567890,
+            "preferred_date": "2024-08-11",
+            "preferred_time": "01:00",
+            "isResolved": true
+        },
+        {
+            "id": "955454",
+            "name": "Jeff",
+            "surname": "Freeman",
+            "phone": 88006542849,
+            "preferred_date": "2024-08-02",
+            "preferred_time": "14:30",
+            "isResolved": true
+        },
+        {
+            "id": "124634",
+            "name": "Michael",
+            "surname": "Jordan",
+            "phone": 89052384266,
+            "preferred_date": "2024-08-17",
+            "preferred_time": "15:57",
+            "isResolved": false
+        },
+        {
+            "id": "112853298346825613331",
+            "name": "Clams",
+            "surname": "Casino",
+            "phone": 84993852711,
+            "preferred_date": "2024-08-15",
+            "preferred_time": "07:10",
+            "isResolved": false
+        }
+    ]
 }

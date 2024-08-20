@@ -1,4 +1,5 @@
 import { Link } from "@/shared/components";
+import { paths } from "@/shared/routing";
 
 import { statsChatToReturn } from "../utils/statsChartToReturn";
 
@@ -16,13 +17,13 @@ export const StatsPage = ({
             <div className="flex flex-col md:flex-row w-full">
                 <aside className="md:mr-auto flex flex-row justify-center md:justify-start md:flex-col mb-4 gap-2">
                     <Link
-                        href={`stats`}
+                        href={paths.stats}
                         className={`bg-transparent hover:bg-transparent ${searchParams.type !== "ratio" ? "border-white" : "border-cyan-dark"} border-2 rounded-sm row-aligned gap-1`}
                     >
                         Общая активность
                     </Link>
                     <Link
-                        href={`stats?type=ratio`}
+                        href={`${paths.stats}?type=ratio`}
                         className={`bg-transparent hover:bg-transparent ${searchParams.type === "ratio" ? "border-white" : "border-cyan-dark"} border-2 rounded-sm row-aligned gap-1`}
                     >
                         Соотношение

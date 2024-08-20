@@ -9,6 +9,7 @@ import {
     ModalContent,
     ModalFooter
 } from "@/shared/components";
+import { paths } from "@/shared/routing";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -20,10 +21,10 @@ export const LeaveApplicationPage = () => {
         queryFn: () => fetch(`http://localhost:8000/applications/${userId}`),
         queryKey: ["applications", userId],
         staleTime: 0
-    });    
-    
-    const router = useRouter()
-    
+    });
+
+    const router = useRouter();
+
     if (possiblyExistingApplication?.status === 404) {
         return (
             <div className="col-aligned h-screen justify-center px-2">
@@ -56,7 +57,7 @@ export const LeaveApplicationPage = () => {
                 </ModalContent>
                 <ModalFooter>
                     <Link
-                        href="/"
+                        href={paths.root}
                         className="text-white font-normal"
                     >
                         На главную

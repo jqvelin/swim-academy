@@ -9,7 +9,6 @@ import { useSendApplicationMutation } from "@/entities/Application/model/query-h
 import {
     Button,
     Checkmark,
-    Link,
     Modal,
     ModalContent,
     ModalFooter,
@@ -24,7 +23,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-export const LeaveApplicationForm = ({createdManually = false}) => {
+export const LeaveApplicationForm = ({ createdManually = false }) => {
     const [isApplicationSent, setIsApplicationSent] = useState(false);
     const { mutate: sendApplication } = useSendApplicationMutation();
     const session = useSession();
@@ -34,8 +33,8 @@ export const LeaveApplicationForm = ({createdManually = false}) => {
             resolver: zodResolver(ApplicationFormSchema)
         });
 
-    const router = useRouter()
-    const queryClient = useQueryClient()
+    const router = useRouter();
+    const queryClient = useQueryClient();
 
     const onSubmit: SubmitHandler<ApplicationFormValues> = async (data) => {
         const formattedDate = formatDate(data.preferred_date);
@@ -44,7 +43,9 @@ export const LeaveApplicationForm = ({createdManually = false}) => {
             preferred_date: formattedDate,
             // Пользователь не может попасть на страницу заявки, если он не выполнил вход.
             // Поэтому, id всегда есть.
-            id: createdManually ? generateId() : session.data?.user.id as string,
+            id: createdManually
+                ? generateId()
+                : (session.data?.user.id as string),
             isResolved: false
         };
 

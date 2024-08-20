@@ -1,9 +1,10 @@
-"use client"
+"use client";
+
 import {
     ComponentPropsWithoutRef,
     FC,
     HTMLAttributes,
-    PropsWithChildren,
+    PropsWithChildren
 } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -11,7 +12,7 @@ import { cn } from "../lib/utils";
 
 export const Modal: FC<
     PropsWithChildren<ComponentPropsWithoutRef<"p">> &
-        HTMLAttributes<HTMLParagraphElement> & {onClose?: () => void}
+        HTMLAttributes<HTMLParagraphElement> & { onClose?: () => void }
 > = ({ ...props }) => {
     return (
         <div

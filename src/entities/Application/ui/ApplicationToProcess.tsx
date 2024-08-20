@@ -6,9 +6,15 @@ import {
     ModalContent,
     ModalFooter,
     ModalHeader,
-    TextInput,
+    TextInput
 } from "@/shared/components";
-import { ClockIcon, PencilIcon, PhoneIcon, TriangleIcon, CheckIcon } from "lucide-react";
+import {
+    CheckIcon,
+    ClockIcon,
+    PencilIcon,
+    PhoneIcon,
+    TriangleIcon
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 import type { Application } from "../model/application.types";
@@ -45,17 +51,21 @@ export const ApplicationToProcess = ({
             return;
         }
         setIsCofirmationShown(false);
-        changeApplicationState({...application, isResolved: !application.isResolved});
+        changeApplicationState({
+            ...application,
+            isResolved: !application.isResolved
+        });
     };
 
     const handleEditApplication = () => {
         if (!editableApplicationContent) {
-            setEditableApplicationContent({...application})
-            return
+            setEditableApplicationContent({ ...application });
+            return;
         }
-        editableApplicationContent && changeApplicationState(editableApplicationContent)
-        setEditableApplicationContent(null)
-    }
+        editableApplicationContent &&
+            changeApplicationState(editableApplicationContent);
+        setEditableApplicationContent(null);
+    };
 
     return (
         <>
@@ -165,8 +175,15 @@ export const ApplicationToProcess = ({
                     </Button>
                 </td>
                 <td>
-                    <Button onClick={handleEditApplication} className="bg-transparent hover:bg-transparent text-xl border-2 p-0 w-10 aspect-square">
-                        {editableApplicationContent ? <CheckIcon width={16} /> : <PencilIcon width={16} />}
+                    <Button
+                        onClick={handleEditApplication}
+                        className="bg-transparent hover:bg-transparent text-xl border-2 p-0 w-10 aspect-square"
+                    >
+                        {editableApplicationContent ? (
+                            <CheckIcon width={16} />
+                        ) : (
+                            <PencilIcon width={16} />
+                        )}
                     </Button>
                 </td>
             </tr>
