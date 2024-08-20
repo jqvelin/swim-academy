@@ -1,5 +1,6 @@
 "use client";
 
+import { useGetApplicationById } from "@/entities/Application/model/query-hooks/useGetApplicationById";
 import { LeaveApplicationForm } from "@/features/LeaveApplication";
 import {
     Button,
@@ -10,18 +11,13 @@ import {
     ModalFooter
 } from "@/shared/components";
 import { paths } from "@/shared/routing";
-import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export const LeaveApplicationPage = () => {
     const session = useSession();
     const userId = session.data?.user.id as string;
-    const { data: possiblyExistingApplication } = useQuery({
-        queryFn: () => fetch(`http://localhost:8000/applications/${userId}`),
-        queryKey: ["applications", userId],
-        staleTime: 0
-    });
+    const { data: possiblyExistingApplication } = useGetApplicationById(userId);
 
     const router = useRouter();
 

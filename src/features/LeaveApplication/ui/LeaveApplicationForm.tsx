@@ -5,6 +5,7 @@ import {
     ApplicationFormSchema,
     type ApplicationFormValues
 } from "@/entities/Application";
+import { BASE_API_URL } from "@/entities/Application/model/applicationsApi";
 import { useSendApplicationMutation } from "@/entities/Application/model/query-hooks/useSendApplicationMutation";
 import {
     Button,
@@ -109,7 +110,7 @@ export const LeaveApplicationForm = ({ createdManually = false }) => {
                                 isPhoneNumberOccupied: async (fieldValue) => {
                                     const possiblyExistingApplication =
                                         await axios.get(
-                                            `http://localhost:8000/applications?phone=${fieldValue}`
+                                            `${BASE_API_URL}/applications?phone=${fieldValue}`
                                         );
                                     if (
                                         possiblyExistingApplication.data

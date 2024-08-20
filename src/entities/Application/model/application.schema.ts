@@ -1,5 +1,6 @@
 import axios from "axios";
 import { z } from "zod";
+import { BASE_API_URL } from "./applicationsApi";
 
 export const ApplicationDtoSchema = z.object({
     id: z.string(),
@@ -36,7 +37,7 @@ export const ApplicationFormSchema = z.object({
         .refine(
             async (data) => {
                 const isOccupied = await axios
-                    .get(`http://localhost:8000/applications?phone=${data}`)
+                    .get(`${BASE_API_URL}/applications?phone=${data}`)
                     .then((res) => res.data.length > 0);
 
                 return !isOccupied;
