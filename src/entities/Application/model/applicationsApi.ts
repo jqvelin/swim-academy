@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { Application } from "./application.types";
 
-export const BASE_API_URL = process.env.NEXT_PUBLIC_BASE_API_URL ?? "https://swim-academy-server.vercel.app"
+export const BASE_API_URL = process.env.NEXT_PUBLIC_BASE_API_URL ?? "http://localhost:4000"
 
 export const applicationsApi = {
     async getAllApplications() {
