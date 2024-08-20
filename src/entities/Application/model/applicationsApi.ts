@@ -16,9 +16,7 @@ export const applicationsApi = {
     },
 
     getApplicationById(applicationId: string) {
-        return axios.get(
-            `${BASE_API_URL}/applications/${applicationId}`
-        );
+        return fetch(`${BASE_API_URL}/applications/${applicationId}`)
     },
 
     sendApplication(application: Application) {
