@@ -25,10 +25,7 @@ const chartConfig = {
 
 export const ApplicationsPieChart = () => {
     const { data } = useGetAllApplications();
-    const { resolvedToUnresolved: chartData } = useMemo(
-        () => useGetApplicationsChartData(data ?? []),
-        [data]
-    );
+    const { resolvedToUnresolved: chartData } = useGetApplicationsChartData(data ?? [])
 
     const resolvedApplicationsPercentage = useMemo(() => {
         const total = data?.length;

@@ -10,7 +10,7 @@ import {
     SortDescIcon,
     UserIcon
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import { useGetAllApplications } from "../model/query-hooks/useGetAllApplications";
 import { useSortApplications } from "../model/useSortApplications";
@@ -21,10 +21,7 @@ export const ApplicationList = () => {
     const [isAddApplicationFormShown, setIsAddApplicationFormShown] =
         useState(false);
     const { data } = useGetAllApplications();
-    const applications = useMemo(
-        () => useSortApplications(data || [], sortBy),
-        [data, sortBy]
-    );
+    const applications = useSortApplications(data || [], sortBy)
     return (
         <>
             <div className="w-11/12 border-cyan-dark row-aligned justify-between border-2 py-4 px-2 rounded-md mb-4 md:mb-8">
