@@ -21,7 +21,7 @@ const chartConfig = {
 
 export const ApplicationsLineChart = () => {
     const { data } = useGetAllApplications();
-    const { fiveDayStats: chartData } = useGetApplicationsChartData(data ?? [])
+    const { fiveDayStats: chartData } = useGetApplicationsChartData(data ?? []);
     const mostBusyDay = useMemo(() => {
         let date = formatDate(new Date());
         let applicationsQty = 0;

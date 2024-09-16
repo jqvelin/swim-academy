@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { applicationsApi } from "../applicationsApi";
 
 export const useGetApplicationById = (applicationId: string) => {
@@ -7,4 +8,4 @@ export const useGetApplicationById = (applicationId: string) => {
         queryKey: ["applications", applicationId],
         staleTime: 0
     });
-}
+};

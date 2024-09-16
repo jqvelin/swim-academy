@@ -1,5 +1,6 @@
 import axios from "axios";
 import { z } from "zod";
+
 import { BASE_API_URL } from "./applicationsApi";
 
 export const ApplicationDtoSchema = z.object({
